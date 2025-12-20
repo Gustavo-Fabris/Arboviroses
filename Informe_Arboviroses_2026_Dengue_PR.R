@@ -329,3 +329,96 @@ PR_2025_DENGUE_SINAIS_Confirmados <- tibble(Febre = as.integer(PR_DENGUE_2025_SI
                                                                                      CLASSI_FIN == 12) %>%
                                                                             count())
 )
+
+#####################################################################################################################
+#####################  Chikungunya   ############################################################################
+#####################################################################################################################
+### Transformando os arquivos da base DBF em um único objeto referente ao período sazonal
+
+PR_CHIK_2025_SINAN <- CHIKON2025 
+
+####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
+
+PR_CHIK_2025_GERAL <- BASE_IBGE[, -c(4, 6)]
+
+PR_CHIK_2025_GERAL$Notificados <- NA
+
+PR_CHIK_2025_GERAL$Confirmados <- NA
+
+PR_CHIK_2025_GERAL$Descartados <- NA
+
+PR_CHIK_2025_GERAL$Autoctones <- NA
+
+PR_CHIK_2025_GERAL$Importados <- NA
+
+PR_CHIK_2025_GERAL$Obitos <- NA
+
+PR_CHIK_2025_GERAL$Incidencia <- NA
+
+for(i in BASE_IBGE[, 2]){
+  
+  ###Notiicações###  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 5] <- as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                    filter(ID_MN_RESI == i) %>%   
+                                                                                    count()
+  )   
+  
+  ###Chikungunya###
+  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 6] <-as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                   filter(CLASSI_FIN == 13, 
+                                                                                          ID_MN_RESI == i) %>%
+                                                                                   count() 
+  )
+  
+  ###Descartados###
+  
+  
+  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 7]<- as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                   filter(CLASSI_FIN == 5,
+                                                                                          ID_MN_RESI == i) %>% 
+                                                                                   count()
+  )  
+  
+  ###Autóctones###
+  
+  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 8]<- as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          TPAUTOCTO == 1,
+                                                                                          CLASSI_FIN == 13) %>% 
+                                                                                   count() 
+  )
+  
+  ###Importados###
+  
+  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 9]<- as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                   filter(ID_MN_RESI == i, 
+                                                                                          TPAUTOCTO == 2,
+                                                                                          CLASSI_FIN == 13) %>% 
+                                                                                   count() 
+  )
+  
+  ###Óbitos###
+  
+  PR_CHIK_2025_GERAL[which(PR_CHIK_2025_GERAL$Código_IBGE == i), 10] <- as.integer(PR_CHIK_2025_SINAN%>% 
+                                                                                     filter(ID_MN_RESI == i, 
+                                                                                            EVOLUCAO == 2) %>% 
+                                                                                     count() 
+  )
+}
+
+###Incidência###FORA DO LOOP###
+
+PR_CHIK_2025_GERAL$Incidencia <- (PR_CHIK_2025_GERAL$Autoctones/PR_CHIK_2025_GERAL$População)*100000  
+PR_CHIK_2025_GERAL$Incidencia <- format(round(PR_CHIK_2025_GERAL$Incidencia, 2))
+PR_CHIK_2025_GERAL$Incidencia <- as.numeric(PR_CHIK_2025_GERAL$Incidencia)
+
+
+PR_CHIK_2025_GERAL$Em_Investigacao <- as.integer(PR_CHIK_2025_GERAL$Notificados) - as.integer(PR_CHIK_2025_GERAL$Confirmados + PR_CHIK_2025_GERAL$Descartados)
+
+PR_CHIK_2025_GERAL <- PR_CHIK_2025_GERAL[, c(1, 3, 4, 5, 6, 12, 7, 8, 9, 10, 11)]
+
+PR_CHIK_2025_GERAL[400, 3:10] <- apply(PR_CHIK_2025_GERAL[, 3:10], 2, sum)

@@ -272,6 +272,7 @@ assign(paste0("RS", RS, "_2025_SINAN_DECODIFICADO"), AUX)
 
 #################   Chikungunya/Paraná   ########################
 #################################################################
+PR_CHIK_2025_SINAN <- CHIKON2025 
 
 PR_2025_SINAN_DECODIFICADO_CHIK <- PR_CHIK_2025_SINAN
 
