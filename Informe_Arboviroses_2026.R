@@ -1,30 +1,19 @@
+# Base de Dados: bases DBF do SINAN; Planilhas de exames executados pelo LACEN e Planilhas de Monitoramento
+#                Municipais (Google Drive)
+
 rm(list =ls())
 
 setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 
-###############################################################################################################
-###############################################################################################################
-##                                                                                                           ##
-##               OS PASSOS ABAIXO (ATÉ LINHA 80) DEVEM SER SEGUIDOS PARA FUNCIONAMENTO!!!                    ##
-##    ################################################################################################       ##
-##                                                                                                           ##
-##            Lembrar que OBRIGATORIAMENTE deve ser baixados as bases DBF de 2009 até 2025                   ##
-##            As bases DBF devem ser salvas no formato DENGON2009, DENGON2012... até DENGON2025              ##
-##            A base DENGON2025 deve ser baixada diariamente e salva no local correto para que               ## 
-##            o sistema esteja sempre atualizado!!!                                                          ##
-##            Os dados do LACEN devem ser baixados da GAL                                                    ##
-##            Estes arquivos devem ser alocados no diretório abaixo:                                         ##
-##            /home/gustavo/Área de trabalho/Análise_de_Dados/Base_de_Dados/DBF ou /Base_de_Dados/LACEN      ##
-##    ############################################################################################           ##
-##                                                                                                           ##
-###############################################################################################################
-###############################################################################################################
+#########################################################################################
 
 Fonte <- "Fonte: SINAN. BASE DBF acessada em 13/11/2025"   ##### Fonte dos gráficos relacionados ao SINAN
 
 Fonte_1 <- "Fonte: Lacen. Acesso em 24/08/2025"            ##### Fonte dos gráficos relacionados ao LACEN
 
 Fonte_2 <- "Fonte: Planilhas de Controle Municipais. Acesso em 3-/10/2025"     ##### Fonte dos gráficos relacionados às Planilhas Municipais
+
+#########################################################################################
 
 SE <- as.data.frame("46")  ### Colocar a Semana Epidemiológica atual
 
@@ -89,7 +78,6 @@ library(stringr)
 library(lubridate)
 library(ggspatial)
 library(sf)
-library(ggplot2)
 library(tidyr)
 #library(gt)
 
@@ -414,230 +402,145 @@ AUX <- RS22_2025_SINAN_DECODIFICADO[-which(RS22_2025_SINAN_DECODIFICADO$Classifi
 write.csv(AUX, "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/RS22_2025_SINAN_PROVAVEIS_DECODIFICADO.csv",
           row.names = FALSE)
 
-
 #######################################################################################################################
 ##################################################################################################################
 #####     Salvando os Gráficos e Mapas
 
-###      Série Histórica - Pag_04
+###          Série Histórica - Pag_05
 
 RS22_2025_INFORME_Pag_05 <- (RS22_GRAF_Serie_Historica_Not_Conf / RS22_GRAF_Serie_Historica_Sorotipo /RS22_GRAF_Serie_Historica_Hospitalizados)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_05.png", 
-    width = 33,
-    height = 40,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_05.png",
+       RS22_2025_INFORME_Pag_05,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_05 
-
-dev.off()
-
-###          Canal Endêmicos Notificados/Confirmados - Pag 05
+###          Canal Endêmicos Notificados/Confirmados - Pag 06
 
 RS22_2025_INFORME_Pag_06 <- (RS_2025_GRAF_CE_Notificados / RS_2025_GRAF_CE_Provaveis / RS_2025_GRAF_CE_Confirmados)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_06.png", 
-    width = 33,
-    height = 40,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_06.png",
+       RS22_2025_INFORME_Pag_06,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_06 
-
-dev.off()
-
-###            Notificados/Confirmados - Pag 06
+###            Notificados/Confirmados - Pag 07
 
 RS22_2025_INFORME_Pag_07 <- (RS22_GRAF_2025_Not_Conf / RS22_GRAF_2025_Autoctones / RS22_GRAF_2025_Investigacao)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES//RS22_2025_INFORME_Pag_07.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_07.png",
+       RS22_2025_INFORME_Pag_07,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_07
-
-dev.off()
-
-###      Autóctones/Descartados
+###           Autóctones/Descartados - Pag 08
 
 RS22_2025_INFORME_Pag_08 <- (RS22_GRAF_2025_Hospitalizados / RS22_GRAF_2025_Descartados / RS22_GRAF_2025_Inconclusivos)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES//RS22_2025_INFORME_Pag_08.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_08.png",
+       RS22_2025_INFORME_Pag_08,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_08
-
-dev.off()
-
-
-###    Em Investigação/Incidência
+###            Em Investigação/Incidência - Pag 09
 
 RS22_2025_INFORME_Pag_09 <- (RS22_GRAF_2025_Encerramento / PR_DENGUE_2025_GRAF_SINAIS / RS22_GRAF_2025_SINAIS)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES//RS22_2025_INFORME_Pag_09.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_09.png",
+       RS22_2025_INFORME_Pag_09,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_09
+####           Incidencia - Pag 10
 
-dev.off()
+RS22_2025_INFORME_Pag_10 <- (RS22_GRAF_2025_Incidencia / RS22_GRAF_2025_Incidencia_Provaveis)
 
-####           Incidencia - Pag 05
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_10.png",
+       RS22_2025_INFORME_Pag_10,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS22_2025_INFORME_Pag_10 <- RS22_GRAF_2025_Incidencia
+####           EXTRA - Pag 11
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES//RS22_2025_INFORME_Pag_10.png", 
-    width = 33,
-    height = 20,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_INFORME_Pag_10 
-
-dev.off()
-
-####           Incidencia Provaveis - Pag 05
-
-RS22_2025_INFORME_Pag_10 <- RS22_GRAF_2025_Incidencia_Provaveis
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES//RS22_2025_INFORME_Pag_10B.png", 
-    width = 33,
-    height = 20,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_INFORME_Pag_10 
-
-dev.off()
-####   EXTRA  #####
-
-RS22_2025_INFORME_PAG_11 <- ((PR_2025_GRAF_PIRAMIDE + RS_2025_GRAF_PIRAMIDE) / 
+RS22_2025_INFORME_Pag_11 <- ((PR_2025_GRAF_PIRAMIDE + RS_2025_GRAF_PIRAMIDE) / 
                                (PR_GRAF_Escolaridade + RS22_GRAF_Escolaridade)/
                                (PR_GRAF_Zona + RS22_GRAF_Zona))
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_11.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_11.png",
+       RS22_2025_INFORME_Pag_11,
+       width = 55,
+       height = 65,
+       units = "cm",)
 
-RS22_2025_INFORME_PAG_11
+####          Canais Endêmicos - Pag 12
 
-dev.off()
+RS_2025_INFORME_CE_SEDE <- (RS_2025_GRAF_CE_Notificados_SEDE / RS_2025_GRAF_CE_Provaveis_SEDE / RS_2025_GRAF_CE_Confirmados_SEDE)
 
-####  Canais Endêmicos IVAIPORÃ
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_12.png",
+       RS22_2025_INFORME_Pag_12,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS_2025_CE_SEDE <- (RS_2025_GRAF_CE_Notificados_SEDE / RS_2025_GRAF_CE_Provaveis_SEDE / RS_2025_GRAF_CE_Confirmados_SEDE)
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_12.png", 
-    width = 33,
-    height = 40,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_CE_SEDE
-
-dev.off()
-
-####  Canais Endêmicos JARDIM
+####         Canais Endêmicos JARDIM - Pag 13
 
 RS_2025_CE_JARDIM <- (RS_2025_GRAF_CE_Notificados_JARDIM / RS_2025_GRAF_CE_Provaveis_JARDIM / RS_2025_GRAF_CE_Confirmados_JARDIM)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_13.png", 
-    width = 33,
-    height = 40,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_13.png",
+       RS_2025_CE_JARDIM,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS_2025_CE_JARDIM
-
-dev.off()
-
-####  Canais Endêmicos SAO JOAO
+####        Canais Endêmicos SAO JOAO
 
 RS_2025_CE_SAO_JOAO <- (RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI / RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI / RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_14.png", 
-    width = 33,
-    height = 40,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_14.png",
+       RS_2025_CE_SAO_JOAO,
+       width = 33,
+       height = 40,
+       units = "cm",)
 
-RS_2025_CE_SAO_JOAO
+###        Histogramas Notificados - Pag 15
 
-dev.off()
-###      Histogramas Notificados - Pag 10
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_15.png",
+       RS_2025_GRAF_Histograma_Notificados,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_15.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+###         Histogramas Confirmados - PAG 16
 
-RS_2025_GRAF_Histograma_Notificados_01
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_16.png",
+       RS_2025_GRAF_Histograma_Confirmados,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+###       Histogramas Prováveis - PAG 17
 
-###        Histogramas Notificados - Pag 11
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_17.png",
+       RS_2025_GRAF_Histograma_Provaveis,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_16.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_Histograma_Notificados_02
-
-dev.off()
-
-###      Histogramas Confirmados - ##PAG 12
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_17.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_Histograma_Confirmados_01
-
-dev.off()
-
-###      Histogramas Confirmados - ##PAG 13
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_18.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_Histograma_Confirmados_02
-
-dev.off()
-
-###     Histogramas Prováveis - ##PAG 14
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_19.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_Histograma_Provaveis_01
-
-dev.off()
-
-###     Histogramas Prováveis - ##PAG 15
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_20.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_Histograma_Provaveis_02
-
-dev.off()
+###       Sorotipo - Pag 18
 
 RS22_2025_GRAF_1 <- (PR_2025_GRAF_SOROTIPO_PR / RS22_2025_GRAF_Sorotipo)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_21.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_18.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_GRAF_2025_US_TOTAL / RS22_GRAF_2025_US_DETEC)
 png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_22A.png", 

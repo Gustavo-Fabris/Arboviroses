@@ -1,6 +1,14 @@
-####################################################################################################################
-################Trabalhando as tabelas base dos Canais Endêmicos####################################################
-####################################################################################################################
+Theme <- function(){theme(axis.text.x = element_text(angle = 85, 
+                                                      vjust = .5,
+                                                      face = "bold",
+                                                      size = 12),
+                           panel.grid.major = element_line(color = "#C0C0C0"),
+                           panel.grid.minor = element_blank(),
+                           panel.background = element_rect(fill = "#DC143C"),
+                           plot.title = element_text(face = "bold",
+                                                     size = 19)
+                          ) 
+}
 
 AUX_SEM <- as.character(c("2025/1",  "2025/2", "2025/3", 
                       "2025/4",  "2025/5",  "2025/6",  
@@ -21,6 +29,10 @@ AUX_SEM <- as.character(c("2025/1",  "2025/2", "2025/3",
                       "2025/48",  "2025/49",  "2025/50",  
                       "2025/51",  "2025/52")
 )
+
+####################################################################################################################
+################Trabalhando as tabelas base dos Canais Endêmicos####################################################
+####################################################################################################################
 
 #######     Eliminando a SE 53 Inexistente no período no ano 2025    #####
 
@@ -100,8 +112,6 @@ colnames(RS_CE_Notificados)[1] <- "Semana_Epidemiológica"
 
 rownames(RS_CE_Notificados) <- c(1:nrow(RS_CE_Notificados))
 
-rm(AUX, AUX2, RS_CE_Notificados_Base)
-
 # write.csv (RS_CE_Notificados, 
 #           paste0("Tabulacoes_R/Arboviroses/RS", RS, "_CE_Notificados.csv"), 
 #           row.names = FALSE)
@@ -113,19 +123,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
-  labs(caption = Fonte,
+    labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -138,11 +137,12 @@ RS_2025_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
             color = "black", 
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
-  ylab("Número de Casos") +
-  scale_x_continuous(breaks = c(1:52), 
+  ylab("Número de Casos")  +
+  Theme() +
+  scale_x_continuous(breaks = c(1:52),
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
+ 
 ####         Canal Endêmico CONFIRMADOS              ####
 
 #######     Eliminando a SE 53 Inexistente no período no ano 2025    #####
@@ -238,19 +238,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
-  labs(caption = Fonte,
+   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRMADOS - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -264,6 +253,7 @@ RS_2025_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -338,20 +328,10 @@ AUX_GRAF[, 9] <- t(RS_2025_SE_Provaveis[nrow(RS_2025_SE_Provaveis), -1 ])
 
 colnames(AUX_GRAF)[9] <- "2025"
 
-RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
+RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, 
+                                    aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos PROVÁVEIS - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -365,10 +345,10 @@ RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
 
 ####################################################################################################################
 ############      Trabalhando a tabela base do Canal Endêmico - IVAIPORÃ      ######################################
@@ -462,19 +442,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_SEDE))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS Ivaiporã- 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -488,6 +457,7 @@ RS_2025_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -578,19 +548,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_SEDE))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS Ivaiporã- 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -604,6 +563,7 @@ RS_2025_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -635,21 +595,9 @@ AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
 RS_2025_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos PROVÁVEIS Ivaiporã - 2025",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 24,
-                              colour = "#556B2F")
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -663,6 +611,7 @@ RS_2025_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -759,19 +708,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_JARDIM))
 AUX_GRAF$Sem_EPI <- AUX_SEM 
 
 RS_2025_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS Jardim Alegre - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -785,6 +723,7 @@ RS_2025_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -875,19 +814,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_JARDIM))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS Jardim Alegre - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -901,6 +829,7 @@ RS_2025_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -931,22 +860,11 @@ AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
-RS_2025_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
+RS_2025_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF, 
+                                           aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos PROVÁVEIS Jardim Alegre - 2025",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 24,
-                              colour = "#556B2F")
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -960,6 +878,7 @@ RS_2025_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -1056,19 +975,8 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_SAO_JOAO))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS São João do Ivaí - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -1082,6 +990,7 @@ RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -1172,21 +1081,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_SAO_JOAO_DO_IVAI))
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
 RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
-                                                       aes(Ordem)
-)  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
+                                                       aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS São João do Ivaí - 2025") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 19)
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -1200,6 +1097,7 @@ RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
@@ -1231,23 +1129,10 @@ AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
 RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
-                                                     aes(Ordem)
-)  +
-  theme(axis.text.x = element_text(angle = 85, 
-                                   vjust = .5,
-                                   face = "bold",
-                                   size = 12)) +
+                                                     aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos PROVÁVEIS São João do Ivaí - 2025",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
-  theme(
-    panel.grid.major = element_line(color = "#C0C0C0"),
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#DC143C"),
-    plot.title = element_text(face = "bold",
-                              size = 24,
-                              colour = "#556B2F")
-  ) +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -1261,6 +1146,7 @@ RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
             linewidth = 1.5) +
   xlab("Semana Epidemiológica") +
   ylab("Número de Casos") +
+  Theme() +
   scale_x_continuous(breaks = c(1:52), 
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))

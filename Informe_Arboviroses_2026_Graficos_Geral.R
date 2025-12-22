@@ -1832,7 +1832,7 @@ AUX_SEM <- c("1",  "2", "3",
              "33",  "34",  "35",  
              "36",  "37",  "38",  
              "39",  "40",  "41",  
-             "42",  "43",  "244",  
+             "42",  "43",  "44",  
              "45",  "46",  "47",  
              "48",  "49",  "50",  
              "51",  "52")
@@ -1901,10 +1901,13 @@ Theme_Hist <- function(){
       panel.grid.minor = element_blank(),
       panel.background = element_rect(fill = "#F5F5F5"),
       plot.title = element_text(face = "bold", 
-                                size = 15, 
-                                colour = "#556B2F")
+                                hjust = 0,
+                                size = 18, 
+                                colour = "#556B2F"),
+      plot.caption = element_text(size = 12,
+                                  hjust = 0),
     )
-}
+  }
 
 AUX_GRAF$SE <- factor(as.numeric(AUX_GRAF$SE), 
                       levels = sort(unique(as.numeric(AUX_GRAF$SE))))
@@ -1918,7 +1921,7 @@ AUX_HIST_NOT_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Notificados")
@@ -1940,12 +1943,11 @@ AUX_HIST_NOT_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_Histograma_Notificados_01 <- (AUX_HIST_NOT_LIST[[1]] + AUX_HIST_NOT_LIST[[2]]) / 
+RS_2025_GRAF_Histograma_Notificados <- (AUX_HIST_NOT_LIST[[1]] + AUX_HIST_NOT_LIST[[2]]) / 
   (AUX_HIST_NOT_LIST[[3]] + AUX_HIST_NOT_LIST[[4]]) / 
   (AUX_HIST_NOT_LIST[[5]] + AUX_HIST_NOT_LIST[[6]]) / 
-  (AUX_HIST_NOT_LIST[[7]] + AUX_HIST_NOT_LIST[[8]]) 
-
-RS_2025_GRAF_Histograma_Notificados_02 <- (AUX_HIST_NOT_LIST[[9]] + AUX_HIST_NOT_LIST[[10]]) / 
+  (AUX_HIST_NOT_LIST[[7]] + AUX_HIST_NOT_LIST[[8]]) /
+  (AUX_HIST_NOT_LIST[[9]] + AUX_HIST_NOT_LIST[[10]]) / 
   (AUX_HIST_NOT_LIST[[11]] + AUX_HIST_NOT_LIST[[12]]) / 
   (AUX_HIST_NOT_LIST[[13]] + AUX_HIST_NOT_LIST[[14]]) / 
   (AUX_HIST_NOT_LIST[[15]] + AUX_HIST_NOT_LIST[[16]]) 
@@ -2016,7 +2018,7 @@ AUX_HIST_CONF_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Confirmados")
@@ -2038,12 +2040,11 @@ AUX_HIST_CONF_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_Histograma_Confirmados_01 <- (AUX_HIST_CONF_LIST[[1]] + AUX_HIST_CONF_LIST[[2]]) / 
+RS_2025_GRAF_Histograma_Confirmados <- (AUX_HIST_CONF_LIST[[1]] + AUX_HIST_CONF_LIST[[2]]) / 
   (AUX_HIST_CONF_LIST[[3]] + AUX_HIST_CONF_LIST[[4]]) / 
   (AUX_HIST_CONF_LIST[[5]] + AUX_HIST_CONF_LIST[[6]]) / 
-  (AUX_HIST_CONF_LIST[[7]] + AUX_HIST_CONF_LIST[[8]]) 
-
-RS_2025_GRAF_Histograma_Confirmados_02 <- (AUX_HIST_CONF_LIST[[9]] + AUX_HIST_CONF_LIST[[10]]) / 
+  (AUX_HIST_CONF_LIST[[7]] + AUX_HIST_CONF_LIST[[8]]) /
+  (AUX_HIST_CONF_LIST[[9]] + AUX_HIST_CONF_LIST[[10]]) / 
   (AUX_HIST_CONF_LIST[[11]] + AUX_HIST_CONF_LIST[[12]]) / 
   (AUX_HIST_CONF_LIST[[13]] + AUX_HIST_CONF_LIST[[14]]) / 
   (AUX_HIST_CONF_LIST[[15]] + AUX_HIST_CONF_LIST[[16]]) 
@@ -2115,7 +2116,7 @@ AUX_HIST_PROV_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Prováveis")
@@ -2137,12 +2138,11 @@ AUX_HIST_PROV_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_Histograma_Provaveis_01 <- (AUX_HIST_PROV_LIST[[1]] + AUX_HIST_PROV_LIST[[2]]) / 
+RS_2025_GRAF_Histograma_Provaveis <- (AUX_HIST_PROV_LIST[[1]] + AUX_HIST_PROV_LIST[[2]]) / 
   (AUX_HIST_PROV_LIST[[3]] + AUX_HIST_PROV_LIST[[4]]) / 
   (AUX_HIST_PROV_LIST[[5]] + AUX_HIST_PROV_LIST[[6]]) / 
-  (AUX_HIST_PROV_LIST[[7]] + AUX_HIST_PROV_LIST[[8]]) 
-
-RS_2025_GRAF_Histograma_Provaveis_02 <- (AUX_HIST_PROV_LIST[[9]] + AUX_HIST_PROV_LIST[[10]]) / 
+  (AUX_HIST_PROV_LIST[[7]] + AUX_HIST_PROV_LIST[[8]]) /
+  (AUX_HIST_PROV_LIST[[9]] + AUX_HIST_PROV_LIST[[10]]) / 
   (AUX_HIST_PROV_LIST[[11]] + AUX_HIST_PROV_LIST[[12]]) / 
   (AUX_HIST_PROV_LIST[[13]] + AUX_HIST_PROV_LIST[[14]]) / 
   (AUX_HIST_PROV_LIST[[15]] + AUX_HIST_PROV_LIST[[16]]) 
@@ -2208,21 +2208,6 @@ colnames(AUX_GRAF) <- str_replace(colnames(AUX_GRAF), " ", "_")
 colnames(AUX_GRAF) <- str_replace(colnames(AUX_GRAF), " ", "_")
 colnames(AUX_GRAF) <- str_replace(colnames(AUX_GRAF), " ", "_")
 
-###############  Criando uma função para o tema do gráfico   ##################
-
-Theme_Hist <- function(){ 
-  theme_minimal(base_size = 10) %+replace%  
-    theme(
-      axis.text.x = element_text(face = "bold"),
-      panel.grid.major = element_line(color = "#C0C0C0"),
-      panel.grid.minor = element_blank(),
-      panel.background = element_rect(fill = "#F5F5F5"),
-      plot.title = element_text(face = "bold", 
-                                size = 15, 
-                                colour = "#556B2F")
-    )
-}
-
 AUX_GRAF$SE <- factor(as.numeric(AUX_GRAF$SE), 
                       levels = sort(unique(as.numeric(AUX_GRAF$SE))))
 
@@ -2235,7 +2220,7 @@ AUX_HIST_CHIK_NOT_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Notificados")
@@ -2257,12 +2242,11 @@ AUX_HIST_CHIK_NOT_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_CHIK_Histograma_Notificados_01 <- (AUX_HIST_CHIK_NOT_LIST[[1]] + AUX_HIST_CHIK_NOT_LIST[[2]]) / 
+RS_2025_GRAF_CHIK_Histograma_Notificados <- (AUX_HIST_CHIK_NOT_LIST[[1]] + AUX_HIST_CHIK_NOT_LIST[[2]]) / 
   (AUX_HIST_CHIK_NOT_LIST[[3]] + AUX_HIST_CHIK_NOT_LIST[[4]]) / 
   (AUX_HIST_CHIK_NOT_LIST[[5]] + AUX_HIST_CHIK_NOT_LIST[[6]]) / 
-  (AUX_HIST_CHIK_NOT_LIST[[7]] + AUX_HIST_CHIK_NOT_LIST[[8]]) 
-
-RS_2025_GRAF_CHIK_Histograma_Notificados_02 <- (AUX_HIST_CHIK_NOT_LIST[[9]] + AUX_HIST_CHIK_NOT_LIST[[10]]) / 
+  (AUX_HIST_CHIK_NOT_LIST[[7]] + AUX_HIST_CHIK_NOT_LIST[[8]]) /
+  (AUX_HIST_CHIK_NOT_LIST[[9]] + AUX_HIST_CHIK_NOT_LIST[[10]]) / 
   (AUX_HIST_CHIK_NOT_LIST[[11]] + AUX_HIST_CHIK_NOT_LIST[[12]]) / 
   (AUX_HIST_CHIK_NOT_LIST[[13]] + AUX_HIST_CHIK_NOT_LIST[[14]]) / 
   (AUX_HIST_CHIK_NOT_LIST[[15]] + AUX_HIST_CHIK_NOT_LIST[[16]]) 
@@ -2335,7 +2319,7 @@ AUX_HIST_CHIK_CONF_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Confirmados")
@@ -2357,12 +2341,11 @@ AUX_HIST_CHIK_CONF_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_CHIK_Histograma_Confirmados_01 <- (AUX_HIST_CHIK_CONF_LIST[[1]] + AUX_HIST_CHIK_CONF_LIST[[2]]) / 
+RS_2025_GRAF_CHIK_Histograma_Confirmados <- (AUX_HIST_CHIK_CONF_LIST[[1]] + AUX_HIST_CHIK_CONF_LIST[[2]]) / 
   (AUX_HIST_CHIK_CONF_LIST[[3]] + AUX_HIST_CHIK_CONF_LIST[[4]]) / 
   (AUX_HIST_CHIK_CONF_LIST[[5]] + AUX_HIST_CHIK_CONF_LIST[[6]]) / 
-  (AUX_HIST_CHIK_CONF_LIST[[7]] + AUX_HIST_CHIK_CONF_LIST[[8]]) 
-
-RS_2025_GRAF_CHIK_Histograma_Confirmados_02 <- (AUX_HIST_CHIK_CONF_LIST[[9]] + AUX_HIST_CHIK_CONF_LIST[[10]]) / 
+  (AUX_HIST_CHIK_CONF_LIST[[7]] + AUX_HIST_CHIK_CONF_LIST[[8]]) /
+  (AUX_HIST_CHIK_CONF_LIST[[9]] + AUX_HIST_CHIK_CONF_LIST[[10]]) / 
   (AUX_HIST_CHIK_CONF_LIST[[11]] + AUX_HIST_CHIK_CONF_LIST[[12]]) / 
   (AUX_HIST_CHIK_CONF_LIST[[13]] + AUX_HIST_CHIK_CONF_LIST[[14]]) / 
   (AUX_HIST_CHIK_CONF_LIST[[15]] + AUX_HIST_CHIK_CONF_LIST[[16]]) 
@@ -2435,7 +2418,7 @@ AUX_HIST_CHIK_PROV_LIST <- AUX_GRAF %>%
     Municipios = gsub("_", " ", Municipios)
   ) %>%
   group_split(Municipios) %>% 
-  lapply(\(dados) {
+  lapply(function(dados) {
     titulo <- dados$Municipios %>% 
       unique() %>% 
       paste0(" - Prováveis")
@@ -2457,12 +2440,11 @@ AUX_HIST_CHIK_PROV_LIST <- AUX_GRAF %>%
       Theme_Hist()
   })
 
-RS_2025_GRAF_CHIK_Histograma_Provaveis_01 <- (AUX_HIST_CHIK_PROV_LIST[[1]] + AUX_HIST_CHIK_PROV_LIST[[2]]) / 
+RS_2025_GRAF_CHIK_Histograma_Provaveis <- (AUX_HIST_CHIK_PROV_LIST[[1]] + AUX_HIST_CHIK_PROV_LIST[[2]]) / 
   (AUX_HIST_CHIK_PROV_LIST[[3]] + AUX_HIST_CHIK_PROV_LIST[[4]]) / 
   (AUX_HIST_CHIK_PROV_LIST[[5]] + AUX_HIST_CHIK_PROV_LIST[[6]]) / 
-  (AUX_HIST_CHIK_PROV_LIST[[7]] + AUX_HIST_CHIK_PROV_LIST[[8]]) 
-
-RS_2025_GRAF_CHIK_Histograma_Provaveis_02 <- (AUX_HIST_CHIK_PROV_LIST[[9]] + AUX_HIST_CHIK_PROV_LIST[[10]]) / 
+  (AUX_HIST_CHIK_PROV_LIST[[7]] + AUX_HIST_CHIK_PROV_LIST[[8]]) /
+  (AUX_HIST_CHIK_PROV_LIST[[9]] + AUX_HIST_CHIK_PROV_LIST[[10]]) / 
   (AUX_HIST_CHIK_PROV_LIST[[11]] + AUX_HIST_CHIK_PROV_LIST[[12]]) / 
   (AUX_HIST_CHIK_PROV_LIST[[13]] + AUX_HIST_CHIK_PROV_LIST[[14]]) / 
   (AUX_HIST_CHIK_PROV_LIST[[15]] + AUX_HIST_CHIK_PROV_LIST[[16]]) 
