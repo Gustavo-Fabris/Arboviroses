@@ -1,7 +1,7 @@
-# Base de Dados: bases DBF do SINAN; Planilhas de exames executados pelo LACEN e Planilhas de Monitoramento
+# Base de Dados: Bases DBF do SINAN; Planilhas de exames executados pelo LACEN e Planilhas de Monitoramento
 #                Municipais (Google Drive)
 
-rm(list =ls())
+rm(list = ls())
 
 setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 
@@ -21,7 +21,7 @@ SE <- as.numeric(SE)
 
 ##########################################################################################
 
-RS <- 22   #####  Deve-se colocar AQUI a Regional
+RS <- 22   #####  Colocar AQUI a Regional
 
 ###########################################################################################################
 ###########   Definindo Períodos Epidemícos para serem excluídos do   #####################################
@@ -79,7 +79,7 @@ library(lubridate)
 library(ggspatial)
 library(sf)
 library(tidyr)
-#library(gt)
+library(gt)
 
 ####  Importando as bases de dados para formulação do Informe Epidemiológico      ####
 
@@ -248,44 +248,50 @@ CHIKON2025$SEM_PRI <-as.numeric(as.character(CHIKON2025$SEM_PRI))
 #####################         2026             #################
 ################################################################
 
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_SINAN_Tabelas.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_SINAN_Decodificacao.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Dengue_PR.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Chikungunya.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Canais_Endemicos.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Graficos_Geral.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Mapas_Geral.R")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Laboratorio.R")
-
-RS22_2025_INDICES_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1QWxmCxl7fPiE_6wnyPLZ-B7a0yXm6NxRhFAbhGOtHeU/edit?gid=863361484#gid=863361484", 
-                                           sheet = "Consolidado")
-
-source("/home/gustavo/Área de trabalho/Análise_de_Dados/Informe_Arboviroses_2026_Entomologia.R")
-
-#####################################################################################################################
-
-#####     Planilhas Google Sheets. Realizando o download das planilhas do                  ######
-#####     google sheets e fazendo o upload da planilha de notificações e Geral Resumida    ######
-
-###              Upload de Notificações para posterior download da mesma planilha com 
-###          as coordenadas. A planilha que irá subir para o google sheets é derivada 
-###         da BASE DBF do SINAN e NÃO CONTÉM COORDENADAS. As coordenadas estão em planilha 
-####             própria no google drive, preenchida pelos municípios, e é vinculada 
-###                        no google sheets com esta planilha.####
-
 gs4_auth()
+
+source("Informe_Arboviroses_2026_SINAN_Tabelas.R")
+
+source("Informe_Arboviroses_2026_SINAN_Decodificacao.R")
 
 RS22_2025_SINAN_DECODIFICADO$SINAN <- as.numeric(as.character(RS22_2025_SINAN_DECODIFICADO$SINAN))
 
 sheet_write(RS22_2025_SINAN_DECODIFICADO, ss = "https://docs.google.com/spreadsheets/d/1z-cXrCe0ZRMRBG2rqW2BmG09HEa4tMmplXhHMnLbRg4/edit#gid=668044240", 
             sheet = "Registros_SINAN")
+
+source("Informe_Arboviroses_2026_Dengue_PR.R")
+
+source("Informe_Arboviroses_2026_Chikungunya.R")
+
+source("Informe_Arboviroses_2026_Canais_Endemicos.R")
+
+source("Informe_Arboviroses_2026_Graficos_Geral.R")
+
+source("Informe_Arboviroses_2026_Mapas_Geral.R")
+
+source("Informe_Arboviroses_2026_Laboratorio.R")
+
+####      Buscando a planilha de índices das ovitrampas no google drive
+
+RS22_2025_INDICES_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1QWxmCxl7fPiE_6wnyPLZ-B7a0yXm6NxRhFAbhGOtHeU/edit?gid=863361484#gid=863361484", 
+                                           sheet = "Consolidado")
+
+source("Informe_Arboviroses_2026_Entomologia.R")
+
+source("Informe_Arboviroses_2026_Inconsistencias.R")
+
+####     Buscando a planilha RS22_2025_SINAN_DECODIFICADO do google sheets com as coordenadas geográficas inseridas pelos municípios   ####
+
+RS22_2025_SINAN_DECODIFICADO <- read_sheet("https://docs.google.com/spreadsheets/d/167vkgU2HLIRk2JKAr_dsxOvhu1luR60e6eMnpw9iIPI/edit?gid=1437725143#gid=1437725143", 
+                                           sheet= "SINAN")
+
+RS22_2025_SINAN_PROVAVEIS_DECODIFICADO <- RS22_2025_SINAN_DECODIFICADO[-which(RS22_2025_SINAN_DECODIFICADO$Classificacao_Final == "DESCARTADO"),] 
+
+source("Informe_Arboviroses_2026_SIG.R")
+
+#####################################################################################################################
+
+######     Buscando planilhas com dados dos municípios no google drive
 
 RS22_2025_REDE_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1cFq9tkfZYApiOdtJHM1WrQtwIMtUMKt8H2NZ9rDyduU/edit?gid=863361484#gid=863361484", 
                                         sheet = "Consolidado")
@@ -299,6 +305,8 @@ RS22_2025_PE <- read_sheet("https://docs.google.com/spreadsheets/d/1JdRMkASZRTpD
 
 RS22_2025_ASSISTENCIA <- read_sheet("https://docs.google.com/spreadsheets/d/1Xx7t478C3knk-OZAkBc3exz0Ki7vDgFA-RPy98kmpiA/edit?gid=863361484#gid=863361484",
                                     sheet = "Consolidado")
+
+#####      Salvando planilhas como CSV
 
 write.csv(PR_DENGUE_2025_GERAL, 
           "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/PR_2025_DENGUE_MUNICIPIOS.csv",
@@ -386,20 +394,10 @@ write.csv (assign(paste0("RS", RS, "_2025_SE_Provaveis_CHIK"), AUX),
            paste0("Tabulacoes_R/Arboviroses/RS", RS, "_2025_SE_Provaveis_CHIK.csv"),
            row.names = FALSE)
 
-
-####     Buscando a planilha RS22_2025_SINAN_DECODIFICADO do google sheets com as coordenadas geográficas inseridas pelos municípios   ####
-
-RS22_2025_SINAN_DECODIFICADO <- read_sheet("https://docs.google.com/spreadsheets/d/167vkgU2HLIRk2JKAr_dsxOvhu1luR60e6eMnpw9iIPI/edit?gid=1437725143#gid=1437725143", 
-                                           sheet= "SINAN")
-
-####      Gravando a planilha RS22_2025_SINAN_DECODIFICADO no diretório para ser utilizada pelo QGIS    ###
-
 write.csv(RS22_2025_SINAN_DECODIFICADO,  "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/RS22_2025_SINAN_DECODIFICADO.csv",
           row.names = FALSE)
 
-AUX <- RS22_2025_SINAN_DECODIFICADO[-which(RS22_2025_SINAN_DECODIFICADO$Classificacao_Final == "DESCARTADO"),] 
-
-write.csv(AUX, "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/RS22_2025_SINAN_PROVAVEIS_DECODIFICADO.csv",
+write.csv(RS22_2025_SINAN_PROVAVEIS_DECODIFICADO, "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/RS22_2025_SINAN_PROVAVEIS_DECODIFICADO.csv",
           row.names = FALSE)
 
 #######################################################################################################################
@@ -483,7 +481,7 @@ ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS
 RS_2025_INFORME_CE_SEDE <- (RS_2025_GRAF_CE_Notificados_SEDE / RS_2025_GRAF_CE_Provaveis_SEDE / RS_2025_GRAF_CE_Confirmados_SEDE)
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_12.png",
-       RS22_2025_INFORME_Pag_12,
+       RS_2025_INFORME_CE_SEDE,
        width = 33,
        height = 40,
        units = "cm",)
@@ -543,236 +541,182 @@ ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS
        units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_GRAF_2025_US_TOTAL / RS22_GRAF_2025_US_DETEC)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_22A.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_19.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_SORO_TOTAL / RS22_2025_GRAF_SORO_REAG)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_22B.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_20.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+#####     Exames Municípios  
 
-##### Exames Municípios  
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_21.png",
+       RS22_GRAF_LACEN_MUNIC,
+       width = 36,
+       height = 23,
+       units = "cm",)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_23A.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_GRAF_LACEN_MUNIC
-
-dev.off()
+#####       Exames Chikungunya
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_SORO_CHIK_TOTAL / RS22_2025_GRAF_SORO_CHIK_REAG)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_23B.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_22.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+#####       Exames Chikungunya Municípios
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_24.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_23.png",
+       RS22_GRAF_LACEN_MUNIC_CHIK,
+       width = 36,
+       height = 23,
+       units = "cm",)
 
-RS22_GRAF_LACEN_MUNIC_CHIK
-
-dev.off()
+#####       Mapa Incidência PR
 
 RS22_2025_GRAF_1 <- (PR_2025_GRAF_INCIDENCIA_PR / PR_2025_GRAF_INCIDENCIA_PROV_PR)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_25.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_24.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+####      Mapa Chikungunya
 
 RS22_2025_GRAF_1 <- (PR_2025_GRAF_CHIK_Notificados / PR_2025_GRAF_CHIK_Incidência)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_26.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_25.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+#####     Sinais Chikungunya PR
 
 RS22_2025_GRAF_1 <- PR_2025_GRAF_SINAIS_CHIK 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_27A.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_26.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 23,
+       units = "cm",)
 
-dev.off()
+####      Chikungunya Regional
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_CHK_Not + RS22_2025_GRAF_CHK_Conf) 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_27B.png", 
-    width = 36,
-    height = 23,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_27.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 23,
+       units = "cm",)
 
-dev.off()
+####      10 S Chik
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_28.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_28.png",
+       RS_2025_GRAF_CHIK_Histograma_Notificados,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-RS_2025_GRAF_CHIK_Histograma_Notificados_01
+####    10 S Chik COnfirmados
 
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_29.png",
+       RRS_2025_GRAF_CHIK_Histograma_Confirmados,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_29.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
+####    10 S Chik Provaveis
 
-RS_2025_GRAF_CHIK_Histograma_Notificados_02
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_30.png",
+       RS_2025_GRAF_CHIK_Histograma_Provaveis,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_30.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_CHIK_Histograma_Confirmados_01
-
-dev.off()
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_31.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_CHIK_Histograma_Confirmados_02
-
-dev.off()
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_32.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_CHIK_Histograma_Provaveis_01
-
-dev.off()
-
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_33.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
-
-RS_2025_GRAF_CHIK_Histograma_Provaveis_02
-
-dev.off()
+#### Zika Virus
 
 RS22_2025_GRAF_1 <- (PR_2025_ZIKA_CHIK_Notificados / PR_2025_GRAF_ZIKA_Incidência)
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_34.png", 
-    width = 36,
-    height = 46,
-    units = "cm", pointsize = 8, res = 300)
 
-RS22_2025_GRAF_1
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_31.png",
+       RS22_2025_GRAF_1,
+       width = 36,
+       height = 46,
+       units = "cm",)
 
-dev.off()
+####    Entomologia
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_ARAPUA / RS22_2025_GRAF_IDO_ARAPUA / 
                        RS22_2025_GRAF_IPO_ARIRANHA / RS22_2025_GRAF_IDO_ARIRANHA  /
                        RS22_2025_GRAF_IPO_CANDIDO / RS22_2025_GRAF_IDO_CANDIDO)
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_35.png", 
-    width = 46,
-    height = 56,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_32.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 56,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_CRUZMALTINA / RS22_2025_GRAF_IDO_CRUZMALTINA / 
                        RS22_2025_GRAF_IPO_GODOY / RS22_2025_GRAF_IDO_GODOY / 
                        RS22_2025_GRAF_IPO_IVAIPORA / RS22_2025_GRAF_IDO_IVAIPORA )
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_36.png", 
-    width = 46,
-    height = 56,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_33.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 56,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_JARDIM / RS22_2025_GRAF_IDO_JARDIM / 
                        RS22_2025_GRAF_IPO_Lidianopolis / RS22_2025_GRAF_IDO_Lidianopolis / 
                        RS22_2025_GRAF_IPO_LUNARDELLI / RS22_2025_GRAF_IDO_LUNARDELLI )
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_37.png", 
-    width = 46,
-    height = 56,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_34.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 56,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_MANUEL_RIBAS / RS22_2025_GRAF_IDO_MANUEL_RIBAS / 
                        RS22_2025_GRAF_IPO_MATO_RICO / RS22_2025_GRAF_IDO_MATO_RICO / 
                        RS22_2025_GRAF_IPO_NOVA_TEBAS / RS22_2025_GRAF_IDO_NOVA_TEBAS )
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_38.png", 
-    width = 46,
-    height = 56,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_35.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 56,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_RIO_BRANCO / RS22_2025_GRAF_IDO_RIO_BRANCO / 
                        RS22_2025_GRAF_IPO_ROSARIO / RS22_2025_GRAF_IDO_ROSARIO / 
                        RS22_2025_GRAF_IPO_SANTA_MARIA / RS22_2025_GRAF_IDO_SANTA_MARIA )
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_39.png", 
-    width = 46,
-    height = 56,
-    units = "cm", pointsize = 8, res = 300)
-
-RS22_2025_GRAF_1
-
-dev.off()
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_36.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 56,
+       units = "cm",)
 
 RS22_2025_GRAF_1 <- (RS22_2025_GRAF_IPO_SAO_JOAO / RS22_2025_GRAF_IDO_SAO_JOAO  )
 
-png(filename = "/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_40.png", 
-    width = 46,
-    height = 14,
-    units = "cm", pointsize = 8, res = 300)
+ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2025_INFORME_Pag_32.png",
+       RS22_2025_GRAF_1,
+       width = 46,
+       height = 14,
+       units = "cm",)
 
-RS22_2025_GRAF_1
-
-dev.off()
-
-##############################    Removendo Objetos desnecessários
+#####    Removendo Objetos desnecessários
 
 rm(RS22_GRAF_Serie_Historica_Not_Conf,
    RS22_GRAF_Serie_Historica_Sorotipo, 
@@ -834,6 +778,9 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    Fonte_1,
    Fonte_2,
    i,
+   O,
+   j,
+   N
    ID_REG,
    nrow,
    Periodos_Epidêmicos_RS,

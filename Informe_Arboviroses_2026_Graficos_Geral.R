@@ -28,8 +28,6 @@ Theme <- function(){
         )
 }
 
-
-
 ####################################    Pirâmide Etária RS  ###########################################################
 
 AUX <- c("< 01", "< 01", "01 - 04", "01 - 04", "05 - 09", "05 - 09", "10 - 14", "10 - 14", "15 - 19", "15 - 19", "20 - 24", "20 - 24", 
@@ -1902,8 +1900,7 @@ Theme_Hist <- function(){
       panel.background = element_rect(fill = "#F5F5F5"),
       plot.title = element_text(face = "bold", 
                                 hjust = 0,
-                                size = 18, 
-                                colour = "#556B2F"),
+                                size = 18),
       plot.caption = element_text(size = 12,
                                   hjust = 0),
     )

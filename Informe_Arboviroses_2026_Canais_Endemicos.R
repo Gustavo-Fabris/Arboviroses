@@ -6,7 +6,9 @@ Theme <- function(){theme(axis.text.x = element_text(angle = 85,
                            panel.grid.minor = element_blank(),
                            panel.background = element_rect(fill = "#DC143C"),
                            plot.title = element_text(face = "bold",
-                                                     size = 19)
+                                                     size = 19),
+                          plot.caption = element_text(size = 12,
+                                                      hjust = 0)
                           ) 
 }
 

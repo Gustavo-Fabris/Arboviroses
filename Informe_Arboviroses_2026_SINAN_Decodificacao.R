@@ -148,9 +148,11 @@ AUX$SOROTIPO <- factor(AUX$SOROTIPO,
 )
 
 AUX$CLASSI_FIN <- factor(AUX$CLASSI_FIN,
-                         label = c("DESCARTADO", "INCONCLUSIVO", "DENGUE", "D.S.A.", "IDENGUE_GRAVE", "CHIKUNGUNYA"), 
+                         label = c("DESCARTADO", "INCONCLUSIVO", "DENGUE", "D.S.A.", "DENGUE_GRAVE", "CHIKUNGUNYA"), 
                          levels = c(5, 8, 10, 11, 12, 13)
 )
+
+
 
 AUX$CRITERIO <- factor(AUX$CRITERIO,
                        label = c("LABORATORIAL", "CLÍNICO-EPIDEMIOLÓGICO", "EM INVESTIGAÇÃO"), 
@@ -269,6 +271,11 @@ colnames(AUX)<- c("RS", "SINAN", "Latitude", "Longitude",
 
 assign(paste0("RS", RS, "_2025_SINAN_DECODIFICADO"), AUX) 
 
+RS22_2025_SINAN_DECODIFICADO[, 56] <- as.character(RS22_2025_SINAN_DECODIFICADO[, 56])
+
+RS22_2025_SINAN_DECODIFICADO$Classificacao_Final[is.na(RS22_2025_SINAN_DECODIFICADO$Classificacao_Final)] <- "EM INVESTIGAÇÃO"
+
+RS22_2025_SINAN_DECODIFICADO[, 56] <- as.factor(RS22_2025_SINAN_DECODIFICADO[, 56])
 
 #################   Chikungunya/Paraná   ########################
 #################################################################

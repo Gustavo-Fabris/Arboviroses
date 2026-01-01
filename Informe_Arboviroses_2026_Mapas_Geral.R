@@ -1,4 +1,22 @@
 ###    MAPAS      ###
+
+Theme <- function(){theme(theme_minimal(),
+                          panel.grid.major = element_line(color = "#C0C0C0"),
+                          panel.grid.minor = element_blank(),
+                          panel.background = element_rect(fill = "#F5F5F5"),
+                          legend.position = "bottom",
+                          legend.title = element_text(face = "bold",
+                                                      size = 14), 
+                          legend.text = element_text(size = 14), 
+                          plot.subtitle = element_text(hjust = 0,
+                                                       size = 12),
+                          plot.caption = element_text(size = 12,
+                                                      hjust = 0),
+                          plot.title = element_text(hjust = 0, 
+                                                    face = "bold",
+                                                    size = 24)
+)
+  }
 ###########################################################################################################
 ##############   Abaixo, preparando o objeto PR_DENGUE_22_23 para entrar no left-Join  ####################
 ##############   com o read_municipality do geobr. Futuramente, padronizar o Base_IBGE ####################
@@ -67,7 +85,6 @@ PR_2025_GRAF_SOROTIPO_PR <- ggplot() +
   annotation_scale(location = "br") +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
-  theme_minimal() +
   scale_fill_manual (name = "Sorotipos",
                      values = c("I" = "green", 
                                 "II" = "blue",
@@ -76,25 +93,18 @@ PR_2025_GRAF_SOROTIPO_PR <- ggplot() +
                                 "I, II, III" ="#00FFFF",
                                 "III" = "yellow",
                                 "II, III" = "red")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE)+
   labs(x = NULL,
        y = NULL,
        caption = Fonte, 
        title = "Sorotipo Circulante - Paraná") + 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) +
   geom_sf(data = SHAPEFILE_REGIONAL_Dissolvido, 
           fill = "#F0FFF0") +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 ### Mapa Incidência Paraná  ####
 
@@ -111,7 +121,6 @@ PR_2025_GRAF_INCIDENCIA_PR <- ggplot() +
   annotation_scale(location = "br") +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
-  theme_minimal() +
   scale_fill_manual (name = "Casos/100.000 hab",
                      values = c("0 casos" = "white", 
                                 "0,001 - 50" = "#FDF5E6",
@@ -119,26 +128,19 @@ PR_2025_GRAF_INCIDENCIA_PR <- ggplot() +
                                 "100,001 - 300" ="#FFD700",
                                 "300,001 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE)+
   labs(x = NULL,
        y = NULL,
        caption = Fonte, 
        title = "Incidência Casos Autóctones de Dengue - Paraná",
        subtitle = "Casos Autóctones por 100.000 Habitantes") + 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) +
   geom_sf(data = SHAPEFILE_REGIONAL_Dissolvido, 
           fill = "#F0FFF0") +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 ### Mapa Incidência Paraná  ####
 
@@ -155,7 +157,6 @@ PR_2025_GRAF_INCIDENCIA_PROV_PR <- ggplot() +
   annotation_scale(location = "br") +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
-  theme_minimal() +
   scale_fill_manual (name = "Casos/100.000 hab",
                      values = c("0 casos" = "white", 
                                 "0,001 - 50" = "#FDF5E6",
@@ -163,7 +164,6 @@ PR_2025_GRAF_INCIDENCIA_PROV_PR <- ggplot() +
                                 "100,001 - 300" ="#FFD700",
                                 "300,001 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
@@ -171,19 +171,13 @@ PR_2025_GRAF_INCIDENCIA_PROV_PR <- ggplot() +
        title = "Incidência Casos Prováveis de Dengue - Paraná",
        subtitle = "Casos Prováveis por 100.000 Habitantes
 Casos Prováveis = Casos Notificados - Casos Descartados") + 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) +
   geom_sf(data = SHAPEFILE_REGIONAL_Dissolvido, 
           fill = "#F0FFF0") +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 #######   Chikungunya    #######
 
@@ -215,12 +209,6 @@ PR_2025_GRAF_CHIK_Notificados <- ggplot() +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
   annotation_scale(location = "br") +
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")) +
   scale_fill_manual (name = "Notificações", 
                      values = c("0 casos" = "white", 
                                 "1 - 10" = "#FDF5E6",    
@@ -228,7 +216,6 @@ PR_2025_GRAF_CHIK_Notificados <- ggplot() +
                                 "51 - 100" = "#FFD700",
                                 "101 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
@@ -240,7 +227,8 @@ PR_2025_GRAF_CHIK_Notificados <- ggplot() +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 ###### Mapa Incidência  ############################
 
@@ -258,12 +246,6 @@ PR_2025_GRAF_CHIK_Incidência <- ggplot() +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
   annotation_scale(location = "br") +
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")) +
   scale_fill_manual (name = "Casos/100.000 hab",
                      values = c("0 casos" = "white", 
                                 "0,001 - 50" = "#FDF5E6",
@@ -271,7 +253,6 @@ PR_2025_GRAF_CHIK_Incidência <- ggplot() +
                                 "100,001 - 300" ="#FFD700",
                                 "300,001 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
@@ -283,7 +264,8 @@ PR_2025_GRAF_CHIK_Incidência <- ggplot() +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 #####################   ZIKA VIRUS   ################################
 
@@ -379,12 +361,6 @@ PR_2025_ZIKA_CHIK_Notificados <- ggplot() +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
   annotation_scale(location = "br") +
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")) +
   scale_fill_manual (name = "Notificações", 
                      values = c("0 casos" = "white", 
                                 "1 - 10" = "#FDF5E6",    
@@ -392,7 +368,6 @@ PR_2025_ZIKA_CHIK_Notificados <- ggplot() +
                                 "51 - 100" = "#FFD700",
                                 "101 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
@@ -404,7 +379,8 @@ PR_2025_ZIKA_CHIK_Notificados <- ggplot() +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 ###### Mapa Incidência  ############################
 
@@ -422,12 +398,6 @@ PR_2025_GRAF_ZIKA_Incidência <- ggplot() +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
   annotation_scale(location = "br") +
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")) +
   scale_fill_manual (name = "Casos/100.000 hab",
                      values = c("0 casos" = "white", 
                                 "0,001 - 50" = "#FDF5E6",
@@ -435,7 +405,6 @@ PR_2025_GRAF_ZIKA_Incidência <- ggplot() +
                                 "100,001 - 300" ="#FFD700",
                                 "300,001 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
@@ -447,7 +416,8 @@ PR_2025_GRAF_ZIKA_Incidência <- ggplot() +
   geom_sf_label(data = SHAPEFILE_REGIONAL_Dissolvido, 
                 aes(label = "22 RS"),
                 size = 4,
-                position = "identity")
+                position = "identity") +
+  Theme()
 
 #####  Mapas Regional   #####
 
@@ -486,25 +456,18 @@ RS22_2025_GRAF_Sorotipo <- ggplot() +
   annotation_scale(location = "br") +
   annotation_north_arrow(location = "tr", 
                          which_north = "true") +
-  theme_minimal() +
   scale_fill_manual (name = "Sorotipos",
                      values = c("I" = "green", 
                                 "II" = "blue",
                                 "I, II" = "#2F4F4F",
                                 "I, III" ="#A0522D")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE)+
   labs(x = NULL,
        y = NULL,
        caption = Fonte, 
-       title = "Sorotipo Circulante - 22ª Regional de Saúde") + 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) 
+       title = "Sorotipo Circulante - 22ª Regional de Saúde") +
+  Theme()
+    
 
 #########################################################################################################################
 #########################   Mapa Chikungunya notificados REGIONAL   #####################################################
@@ -538,19 +501,12 @@ RS22_2025_GRAF_CHK_Not <- ggplot() +
                                 "51 - 100" = "#DAA520",
                                 "101 - 500" = "#FF8C00",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   labs(x = NULL,
        y = NULL,
        caption = Fonte, 
        title = "Chikungunya Casos Notificados - 22ªRS",
        subtitle = "Números absolutos") + 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) 
+  Theme()
 
 #########################################################################################################################
 #########################   Mapa Chikungunya Confirmados REGIONAL   #####################################################
@@ -576,7 +532,6 @@ RS22_2025_GRAF_CHK_Conf <- ggplot() +
   annotation_scale(location = "br") +
   annotation_north_arrow(location = "tl", 
                          which_north = "true") +
-  theme_minimal() +
   scale_fill_manual (name = "Casos/100.000 hab",
                      values = c("0 casos" = "white", 
                                 "0,001 - 50" = "#FDF5E6",
@@ -584,19 +539,13 @@ RS22_2025_GRAF_CHK_Conf <- ggplot() +
                                 "100,001 - 300" ="#FFD700",
                                 "300,001 - 500" = "#DAA520",
                                 ">500" = "#DC143C")) +
-  theme(legend.position = "bottom") +
   coord_sf(expand = FALSE) +
   labs(x = NULL,
        y = NULL,
        caption = Fonte, 
        title = "Incidência de Chikungunya - 22ªRS",
-       subtitle = "Casos autóctones por 100.000 habitantes")+ 
-  theme( panel.grid.major = element_line(color = "#C0C0C0"),
-         panel.grid.minor = element_blank(),
-         panel.background = element_rect(fill = "#F5F5F5"),
-         plot.title = element_text(face = "bold", 
-                                   size = 24,
-                                   colour = "#556B2F")
-  ) 
+       subtitle = "Casos autóctones por 100.000 habitantes") + 
+  Theme()
+ 
 
 #########################################################################################################################
