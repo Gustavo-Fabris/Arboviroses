@@ -116,7 +116,7 @@ AUX <- RS22_2025_SIG_ARAPUA_OVITRAMPAS[, c(1:8,
                                            ncol(RS22_2025_SIG_ARAPUA_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_ARAPUA_OVITRAMPAS <- AUX
+RS22_2025_SIG_ARAPUA_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_ARAPUA_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1V3KV69giNzSZDjd7j3tCbPtnh6Z4jML_8-V6m0xxDAU/edit?gid=1793084584#gid=1793084584",
@@ -129,37 +129,37 @@ RS22_ARAPUA_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
 
 sheet_write(RS22_ARAPUA_2025_SINAN_10S, 
             ss = "https://docs.google.com/spreadsheets/d/1V3KV69giNzSZDjd7j3tCbPtnh6Z4jML_8-V6m0xxDAU/edit?gid=1105592009#gid=1105592009",
-            sheet = "Notificações_10S")
+            sheet = "Notificacoes_10S")
 
 #######  ARIRANHA DO IVAÍ
 
 ##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
 
-RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1Og37J17lB08NSmOHKRFncVKl1pBi3DNzNsxW4S9hRZE/edit?gid=646301390#gid=646301390",
+RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1Og37J17lB08NSmOHKRFncVKl1pBi3DNzNsxW4S9hRZE/edit?gid=646301390#gid=646301390",
                                                          sheet ="Rede_Ovitrampas")
 
-AUX <- RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS[, c(1:8,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -15,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -14,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -13,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -12,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -11,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -10,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -9,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -8,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -7,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -6,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -5,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -4,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -3,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -2,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS) -1,
-                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS)), ]
+AUX <- RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS[, c(1:8,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -15,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -14,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -13,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -12,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -11,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -10,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -9,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -8,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -7,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -6,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -5,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -4,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -3,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -2,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS) -1,
+                                                     ncol(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS <- AUX
+RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS <- as.data.frame(AUX)
 
-sheet_write(RS22_2025_SIG_ARIRANHA_DO_IVAÍ_OVITRAMPAS, 
+sheet_write(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1V3KV69giNzSZDjd7j3tCbPtnh6Z4jML_8-V6m0xxDAU/edit?gid=1793084584#gid=1793084584",
             sheet = "SIG_OVITRAMPAS")
 
@@ -198,7 +198,7 @@ AUX <- RS22_2025_SIG_CANDIDO_OVITRAMPAS[, c(1:8,
                                             ncol(RS22_2025_SIG_CANDIDO_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_CANDIDO_OVITRAMPAS <- AUX
+RS22_2025_SIG_CANDIDO_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_CANDIDO_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1xsOFwXYN_NTphr5iJh46iNskM1p_QKip54A3DPICugQ/edit?gid=419495071#gid=419495071",
@@ -239,7 +239,7 @@ AUX <- RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS[, c(1:8,
                                                 ncol(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS <- AUX
+RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1EoBHM0s0fiIm6nYb940u49moQFPskg2WRsyQSeuVGl4/edit?gid=2030620772#gid=2030620772",
@@ -280,7 +280,7 @@ AUX <- RS22_2025_SIG_GODOY_OVITRAMPAS[, c(1:8,
                                           ncol(RS22_2025_SIG_GODOY_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_GODOY_OVITRAMPAS <- AUX
+RS22_2025_SIG_GODOY_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_GODOY_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/11aaWzd7xAnkZ6uoF_pv1z8iFiFkKXM-zPkbgOK91QlE/edit?gid=580657221#gid=580657221",
@@ -321,7 +321,7 @@ AUX <- RS22_2025_SIG_IVAIPORA_OVITRAMPAS[, c(1:8,
                                              ncol(RS22_2025_SIG_IVAIPORA_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_IVAIPORA_OVITRAMPAS <- AUX
+RS22_2025_SIG_IVAIPORA_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_IVAIPORA_OVITRAMPAS, ss = "https://docs.google.com/spreadsheets/d/1Mg10zhEVIWzXaeXC3aCDne8VgLYbVFM4d9FyZuVQd4U/edit?gid=1751658261#gid=1751658261", 
             sheet = "SIG_OVITRAMPAS")
@@ -351,7 +351,7 @@ AUX <- RS22_2025_SIG_IVAIPORA_Mosquitrap[, c(1:7,
 ), ]
 
 
-RS22_2025_SIG_IVAIPORA_Mosquitrap <- AUX
+RS22_2025_SIG_IVAIPORA_Mosquitrap <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_IVAIPORA_Mosquitrap, ss = "https://docs.google.com/spreadsheets/d/1Mg10zhEVIWzXaeXC3aCDne8VgLYbVFM4d9FyZuVQd4U/edit?gid=211721610#gid=211721610", 
             sheet = "SIG_Mosquitrap")
@@ -370,6 +370,8 @@ sheet_write(RS22_Ivaiporã_2025_SINAN_10S, ss = "https://docs.google.com/spreads
 
 RS22_2025_SIG_JARDIM_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1Yt1gooatxY0Y7EWFBesJnp68xfCnR7EdOfUtAlnRnxY/edit?gid=769718338#gid=769718338", 
                                                sheet ="Rede_Ovitrampas")
+
+RS22_2025_SIG_JARDIM_OVITRAMPAS <- as.data.frame(RS22_2025_SIG_JARDIM_OVITRAMPAS[, -3])
 
 AUX <- RS22_2025_SIG_JARDIM_OVITRAMPAS[, c(1:8, 
                                            ncol(RS22_2025_SIG_JARDIM_OVITRAMPAS) -15,
@@ -390,8 +392,6 @@ AUX <- RS22_2025_SIG_JARDIM_OVITRAMPAS[, c(1:8,
                                            ncol(RS22_2025_SIG_JARDIM_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_JARDIM_OVITRAMPAS <- AUX
-
 sheet_write(RS22_2025_SIG_JARDIM_OVITRAMPAS, ss = "https://docs.google.com/spreadsheets/d/1Yt1gooatxY0Y7EWFBesJnp68xfCnR7EdOfUtAlnRnxY/edit?gid=297610919#gid=297610919", 
             sheet = "SIG_OVITRAMPAS")
 
@@ -407,8 +407,8 @@ sheet_write(RS22_Jardim_Alegre_2025_SINAN_10S, ss = "https://docs.google.com/spr
 
 ##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
 
-RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1kf5EuZ_-gOjogpVWkM5edv-yjIaPloSt0KrZK03V21w/edit?gid=1745514602#gid=1745514602",
-                                                     sheet ="Rede Ovitrampas")
+RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1a1_f7fPoNRMy0ASfY5Yu8xG6QniCbKsJ7FHeyeKXjN0/edit?gid=1745514602#gid=1745514602",
+                                                     sheet ="Rede_Ovitrampas")
 
 AUX <- RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS[, c(1:8,
                                                  ncol(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS) -15,
@@ -429,10 +429,10 @@ AUX <- RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS[, c(1:8,
                                                  ncol(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS <- AUX
+RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS, 
-            ss = "https://docs.google.com/spreadsheets/d/1kf5EuZ_-gOjogpVWkM5edv-yjIaPloSt0KrZK03V21w/edit?gid=886661365#gid=886661365",
+            ss = "https://docs.google.com/spreadsheets/d/1a1_f7fPoNRMy0ASfY5Yu8xG6QniCbKsJ7FHeyeKXjN0/edit?gid=886661365#gid=886661365",
             sheet = "SIG_OVITRAMPAS")
 
 #### SINAN 10 semanas - LIDIANOPOLIS
@@ -441,15 +441,15 @@ RS22_LIDIANOPOLIS_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
   filter(Municipio_Residencia == "LIDIANÓPOLIS")
 
 sheet_write(RS22_LIDIANOPOLIS_2025_SINAN_10S, 
-            ss = "https://docs.google.com/spreadsheets/d/1kf5EuZ_-gOjogpVWkM5edv-yjIaPloSt0KrZK03V21w/edit?gid=1764843095#gid=1764843095",
-            sheet = "Notificações_10S")
+            ss = "https://docs.google.com/spreadsheets/d/1a1_f7fPoNRMy0ASfY5Yu8xG6QniCbKsJ7FHeyeKXjN0/edit?gid=1764843095#gid=1764843095",
+            sheet = "Notificacoes_10S")
 
 #######  Lunardelli
 
 ##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
 
-RS22_2025_SIG_LUNARDELLI_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1_TqCW57lEt2B5HiQs06E9ov8K4jVnhA7pOp51wwBbUI/edit?gid=1884457560#gid=1884457560",
-                                                   sheet ="Rede Ovitrampas")
+RS22_2025_SIG_LUNARDELLI_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/186vD9iqH-r8RIWUWYfC2EtYJAlr0Wb4N-FUSHxxpjQ0/edit?gid=363473185#gid=363473185",
+                                                   sheet ="Rede_Ovitrampas")
 
 AUX <- RS22_2025_SIG_LUNARDELLI_OVITRAMPAS[, c(1:8,
                                                ncol(RS22_2025_SIG_LUNARDELLI_OVITRAMPAS) -15,
@@ -470,10 +470,10 @@ AUX <- RS22_2025_SIG_LUNARDELLI_OVITRAMPAS[, c(1:8,
                                                ncol(RS22_2025_SIG_LUNARDELLI_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_LUNARDELLI_OVITRAMPAS <- AUX
+RS22_2025_SIG_LUNARDELLI_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_LUNARDELLI_OVITRAMPAS, 
-            ss = "https://docs.google.com/spreadsheets/d/1_TqCW57lEt2B5HiQs06E9ov8K4jVnhA7pOp51wwBbUI/edit?gid=1041871660#gid=1041871660",
+            ss = "https://docs.google.com/spreadsheets/d/186vD9iqH-r8RIWUWYfC2EtYJAlr0Wb4N-FUSHxxpjQ0/edit?gid=1041871660#gid=1041871660",
             sheet = "SIG_OVITRAMPAS")
 
 #### SINAN 10 semanas - LUNARDELLI
@@ -482,8 +482,8 @@ RS22_LUNARDELLI_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
   filter(Municipio_Residencia == "LUNARDELLI")
 
 sheet_write(RS22_LUNARDELLI_2025_SINAN_10S, 
-            ss = "https://docs.google.com/spreadsheets/d/1_TqCW57lEt2B5HiQs06E9ov8K4jVnhA7pOp51wwBbUI/edit?gid=536550572#gid=536550572",
-            sheet = "Notificações_10S")
+            ss = "https://docs.google.com/spreadsheets/d/186vD9iqH-r8RIWUWYfC2EtYJAlr0Wb4N-FUSHxxpjQ0/edit?gid=536550572#gid=536550572",
+            sheet = "Notificacoes_10S")
 
 #######  Manoel Ribas
 
@@ -511,7 +511,7 @@ AUX <- RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS[, c(1:8,
                                                  ncol(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS <- AUX
+RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1u3pn-3JHJ6Q4s4zley_9SPDVvOy3qAYhkG05BDQagwg/edit?gid=1949307043#gid=1949307043",
@@ -530,8 +530,8 @@ sheet_write(RS22_MANOEL_RIBAS_2025_SINAN_10S,
 
 ##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
 
-RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1etqgUoPBa5nPOeJiR9QfenXhPQPzWGubb2WRjGjtJds/edit?gid=242017248#gid=242017248",
-                                                   sheet ="Rede Ovitrampas")
+RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/16EBfL9TyU8LFKQ89vwRY1LTt-4ZeLa0SuoguiuG_5Xg/edit?gid=242017248#gid=242017248",
+                                                   sheet ="Rede_Ovitrampas")
 
 AUX <- RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS[, c(1:8,
                                                ncol(RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS) -15,
@@ -552,10 +552,10 @@ AUX <- RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS[, c(1:8,
                                                ncol(RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS <- AUX
+RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS, 
-            ss = "https://docs.google.com/spreadsheets/d/1etqgUoPBa5nPOeJiR9QfenXhPQPzWGubb2WRjGjtJds/edit?gid=718202382#gid=718202382",
+            ss = "https://docs.google.com/spreadsheets/d/16EBfL9TyU8LFKQ89vwRY1LTt-4ZeLa0SuoguiuG_5Xg/edit?gid=718202382#gid=718202382",
             sheet = "SIG_OVITRAMPAS")
 
 #### SINAN 10 semanas - Nova Tebas
@@ -563,8 +563,8 @@ sheet_write(RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS,
 RS22_NOVA_TEBAS_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
   filter(Municipio_Residencia == "NOVA TEBAS")
 
-sheet_write(RS22_NOVA_TEBAS_2025_SINAN_10S, ss = "https://docs.google.com/spreadsheets/d/1etqgUoPBa5nPOeJiR9QfenXhPQPzWGubb2WRjGjtJds/edit?gid=1102152649#gid=1102152649",
-            sheet = "Notificações_10S")
+sheet_write(RS22_NOVA_TEBAS_2025_SINAN_10S, ss = "https://docs.google.com/spreadsheets/d/16EBfL9TyU8LFKQ89vwRY1LTt-4ZeLa0SuoguiuG_5Xg/edit?gid=1102152649#gid=1102152649",
+            sheet = "Notificacoes_10S")
 
 #######  Mato Rico
 
@@ -592,7 +592,7 @@ AUX <- RS22_2025_SIG_MATO_RICO_OVITRAMPAS[, c(1:8,
                                               ncol(RS22_2025_SIG_MATO_RICO_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_MATO_RICO_OVITRAMPAS <- AUX
+RS22_2025_SIG_MATO_RICO_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_MATO_RICO_OVITRAMPAS, 
             ss = "https://docs.google.com/spreadsheets/d/1FOhGcULbvyfrMgdRrC4ZAUpe8s5I-prreRaeuGwgac0/edit?gid=1640866369#gid=1640866369",
@@ -607,14 +607,135 @@ sheet_write(RS22_MATO_RICO_2025_SINAN_10S,
             ss = "https://docs.google.com/spreadsheets/d/1FOhGcULbvyfrMgdRrC4ZAUpe8s5I-prreRaeuGwgac0/edit?gid=690047022#gid=690047022",
             sheet = "Notificacoes_10S")
 
+#######  Rio Branco do Ivaí
 
+##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
+
+RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1vewfyhZAfqHIPq4plyXJrGlJ-l28jUoppkSSyQIB50Q/edit?gid=503431409#gid=503431409",
+                                                   sheet ="Rede_Ovitrampas")
+
+AUX <- RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS[, c(1:8,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -15,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -14,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -13,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -12,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -11,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -10,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -9,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -8,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -7,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -6,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -5,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -4,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -3,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -2,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS) -1,
+                                               ncol(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)), ]
+
+
+RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS <- as.data.frame(AUX)
+
+sheet_write(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS, 
+            ss = "https://docs.google.com/spreadsheets/d/1vewfyhZAfqHIPq4plyXJrGlJ-l28jUoppkSSyQIB50Q/edit?gid=1044549514#gid=1044549514",
+            sheet = "SIG_OVITRAMPAS")
+
+#### SINAN 10 semanas - RIO_BRANCO
+
+RS22_RIO_BRANCO_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
+  filter(Municipio_Residencia == "RIO BRANCO DO IVAÍ")
+
+sheet_write(RS22_RIO_BRANCO_2025_SINAN_10S, 
+            ss = "https://docs.google.com/spreadsheets/d/1vewfyhZAfqHIPq4plyXJrGlJ-l28jUoppkSSyQIB50Q/edit?gid=1390886175#gid=1390886175",
+            sheet = "Notificacoes_10S")
+
+#######  Rosário do Ivaí
+
+##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
+
+RS22_2025_SIG_ROSARIO_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1wrwAz1zplJj0tdEVCUHOVUhsmtX3EBPPn5_ji9d8eKg/edit?gid=1929835008#gid=1929835008",
+                                                sheet ="Rede_Ovitrampas")
+
+AUX <- RS22_2025_SIG_ROSARIO_OVITRAMPAS[, c(1:8,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -15,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -14,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -13,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -12,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -11,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -10,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -9,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -8,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -7,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -6,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -5,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -4,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -3,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -2,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS) -1,
+                                            ncol(RS22_2025_SIG_ROSARIO_OVITRAMPAS)), ]
+
+
+RS22_2025_SIG_ROSARIO_OVITRAMPAS <- as.data.frame(AUX)
+
+sheet_write(RS22_2025_SIG_ROSARIO_OVITRAMPAS, 
+            ss = "https://docs.google.com/spreadsheets/d/1wrwAz1zplJj0tdEVCUHOVUhsmtX3EBPPn5_ji9d8eKg/edit?gid=1730554982#gid=1730554982",
+            sheet = "SIG_OVITRAMPAS")
+
+#### SINAN 10 semanas - ROSARIO
+
+RS22_ROSARIO_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
+  filter(Municipio_Residencia == "ROSÁRIO DO IVAÍ")
+
+sheet_write(RS22_ROSARIO_2025_SINAN_10S, 
+            ss = "https://docs.google.com/spreadsheets/d/1wrwAz1zplJj0tdEVCUHOVUhsmtX3EBPPn5_ji9d8eKg/edit?gid=1140012445#gid=1140012445",
+            sheet = "Notificacoes_10S")
+
+#######  Santa Maria do Oeste
+
+##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
+
+RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/11KDwFpSyAu3MDSoODsCWiJhAdKmPBT-9Ow07IpbBJSU/edit?gid=30760982#gid=30760982",
+                                                    sheet ="Rede_Ovitrampas")
+
+AUX <- RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS[, c(1:8,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -15,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -14,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -13,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -12,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -11,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -10,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -9,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -8,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -7,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -6,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -5,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -4,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -3,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -2,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS) -1,
+                                                ncol(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)), ]
+
+
+RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS <- as.data.frame(AUX)
+
+sheet_write(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS, 
+            ss = "https://docs.google.com/spreadsheets/d/11KDwFpSyAu3MDSoODsCWiJhAdKmPBT-9Ow07IpbBJSU/edit?gid=1466758429#gid=1466758429",
+            sheet = "SIG_OVITRAMPAS")
+
+#### SINAN 10 semanas - SANTA_MARIA
+
+RS22_SANTA_MARIA_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
+  filter(Municipio_Residencia == "SANTA MARIA DO OESTE")
+
+sheet_write(RS22_SANTA_MARIA_2025_SINAN_10S, 
+            ss = "https://docs.google.com/spreadsheets/d/11KDwFpSyAu3MDSoODsCWiJhAdKmPBT-9Ow07IpbBJSU/edit?gid=1193833963#gid=1193833963",
+            sheet = "Notificacoes_10S")
 
 #######  São João do Ivaí
 
 ##  Acertando a planilha de ovitrampas para conter só as últimas 4 leituras
 
-RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1oEr3yDN7klgpSaGBWgpsDhRY7S0-8yMRoTp0Io-E_ks/edit?gid=1873381537#gid=1873381537",
-                                                         sheet ="Rede Ovitrampas")
+RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS <- read_sheet ("https://docs.google.com/spreadsheets/d/1XcOUVk-TBiVHURb8L13x0nueBo5Wveu0aIvVGdvUsdE/edit?gid=1873381537#gid=1873381537",
+                                                         sheet ="Rede_Ovitrampas")
 
 AUX <- RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS[, c(1:8,
                                                      ncol(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS) -15,
@@ -635,10 +756,10 @@ AUX <- RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS[, c(1:8,
                                                      ncol(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS)), ]
 
 
-RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS <- AUX
+RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS <- as.data.frame(AUX)
 
 sheet_write(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS, 
-            ss = "https://docs.google.com/spreadsheets/d/1oEr3yDN7klgpSaGBWgpsDhRY7S0-8yMRoTp0Io-E_ks/edit?gid=1080166106#gid=1080166106",
+            ss = "https://docs.google.com/spreadsheets/d/1XcOUVk-TBiVHURb8L13x0nueBo5Wveu0aIvVGdvUsdE/edit?gid=1080166106#gid=1080166106",
             sheet = "SIG_OVITRAMPAS")
 
 #### SINAN 10 semanas - São João do Ivaí
@@ -647,8 +768,8 @@ RS22_SAO_JOAO_DO_IVAI_2025_SINAN_10S <- RS22_2025_SINAN_10S %>%
   filter(Municipio_Residencia == "SÃO JOÃO DO IVAÍ")
 
 sheet_write(RS22_SAO_JOAO_DO_IVAI_2025_SINAN_10S, 
-            ss = "https://docs.google.com/spreadsheets/d/1oEr3yDN7klgpSaGBWgpsDhRY7S0-8yMRoTp0Io-E_ks/edit?gid=2017988045#gid=2017988045",
-            sheet = "Notificações_10S")
+            ss = "https://docs.google.com/spreadsheets/d/1XcOUVk-TBiVHURb8L13x0nueBo5Wveu0aIvVGdvUsdE/edit?gid=2017988045#gid=2017988045",
+            sheet = "Notificacoes_10S")
 
 ##############   Planilha Ovitrampas Regional   ########
 
@@ -752,14 +873,226 @@ colnames(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS)[22] <- "Coleta_4"
 colnames(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS)[23] <- "OBS_4"
 colnames(RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS)[24] <- "Resultado_4"
 
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_ARAPUA_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_CANDIDO_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_GODOY_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_ROSARIO_OVITRAMPAS)[24] <- "Resultado_4"
+
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[9] <- "Instalacao_1"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[10] <- "Coleta_1"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[11] <- "OBS_1"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[12] <- "Resultado_1"
+
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[13] <- "Instalacao_2"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[14] <- "Coleta_2"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[15] <- "OBS_2"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[16] <- "Resultado_2"
+
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[17] <- "Instalacao_3"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[18] <- "Coleta_3"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[19] <- "OBS_3"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[20] <- "Resultado_3"
+
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[21] <- "Instalacao_4"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[22] <- "Coleta_4"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[23] <- "OBS_4"
+colnames(RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS)[24] <- "Resultado_4"
+
+
 ## Ovitrampas Regional
 
-RS22_2025_SIG_22RS_OVITRAMPAS <- rbind(RS22_2025_SIG_JARDIM_OVITRAMPAS,
+RS22_2025_SIG_22RS_OVITRAMPAS <- as.data.frame(rbind(RS22_2025_SIG_JARDIM_OVITRAMPAS,
                                        RS22_2025_SIG_IVAIPORA_OVITRAMPAS,
                                        RS22_2025_SIG_NOVA_TEBAS_OVITRAMPAS,
                                        RS22_2025_SIG_LUNARDELLI_OVITRAMPAS,
-                                       RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS)
+                                       RS22_2025_SIG_SAO_JOAO_DO_IVAI_OVITRAMPAS,
+                                       RS22_2025_SIG_ARAPUA_OVITRAMPAS,
+                                       RS22_2025_SIG_ARIRANHA_DO_IVAI_OVITRAMPAS,
+                                       RS22_2025_SIG_CANDIDO_OVITRAMPAS,
+                                       RS22_2025_SIG_CRUZMALTINA_OVITRAMPAS,
+                                       RS22_2025_SIG_GODOY_OVITRAMPAS,
+                                       RS22_2025_SIG_LIDIANOPOLIS_OVITRAMPAS,
+                                       RS22_2025_SIG_MANOEL_RIBAS_OVITRAMPAS,
+                                       RS22_2025_SIG_RIO_BRANCO_OVITRAMPAS,
+                                       RS22_2025_SIG_ROSARIO_OVITRAMPAS,
+                                       RS22_2025_SIG_SANTA_MARIA_OVITRAMPAS))
 
+RS22_2025_SIG_22RS_OVITRAMPAS <- as.character(RS22_2025_SIG_22RS_OVITRAMPAS[,c(6,7)])
 
 write.csv(RS22_2025_SIG_22RS_OVITRAMPAS,
           "/home/gustavo/Área de trabalho/Análise_de_Dados/Tabulacoes_R/Arboviroses/RS22_2025_SIG_22RS_OVITRAMPAS.csv",

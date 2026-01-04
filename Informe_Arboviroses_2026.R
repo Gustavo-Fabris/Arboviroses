@@ -7,7 +7,7 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 
 #########################################################################################
 
-Fonte <- "Fonte: SINAN. BASE DBF acessada em 13/11/2025"   ##### Fonte dos gráficos relacionados ao SINAN
+Fonte <- "Fonte: SINAN Online. BASE DBF acessada em 13/11/2025"   ##### Fonte dos gráficos relacionados ao SINAN
 
 Fonte_1 <- "Fonte: Lacen. Acesso em 24/08/2025"            ##### Fonte dos gráficos relacionados ao LACEN
 
@@ -23,49 +23,6 @@ SE <- as.numeric(SE)
 
 RS <- 22   #####  Colocar AQUI a Regional
 
-###########################################################################################################
-###########   Definindo Períodos Epidemícos para serem excluídos do   #####################################
-###########   cálculo para os canais endêmicos Regionais              #####################################
-###########        COMENTAR AS LINHAS DOS PERÍODOS EPIDÊMICOS         #####################################
-###########################################################################################################
-
-# Periodos_Epidêmicos_RS <- c(#  "2009",
-#   #  "2010",
-#   #  "2011",
-#   #  "2012",
-#   #  "2013",
-#   #  "2014",
-#   #  "2015",
-#   "2016",
-#   "2017",
-#   "2018",
-#   "2019",
-#   "2020",
-#   "2021",
-#   "2022",
-#   "2023",
-#   "2024",
-#   "2025"
-# )
-# 
-# Periodos_Epidêmicos_SEDE <- c(# "2009",
-#   # "2010",
-#   # "2011",
-#   # "2012",
-#   # "2013",
-#   # "2014",
-#   # "2015",
-#   "2016",
-#   "2017",
-#   "2018",
-#   "2019",
-#   "2020",
-#   "2021",
-#   "2022",
-#   "2023",
-#   "2024",
-#   "2025"
-# )
 ####  libraries a serem utilizadas  ###
 
 library(patchwork)
@@ -248,15 +205,25 @@ CHIKON2025$SEM_PRI <-as.numeric(as.character(CHIKON2025$SEM_PRI))
 #####################         2026             #################
 ################################################################
 
-gs4_auth()
-
 source("Informe_Arboviroses_2026_SINAN_Tabelas.R")
 
 source("Informe_Arboviroses_2026_SINAN_Decodificacao.R")
 
 RS22_2025_SINAN_DECODIFICADO$SINAN <- as.numeric(as.character(RS22_2025_SINAN_DECODIFICADO$SINAN))
 
-sheet_write(RS22_2025_SINAN_DECODIFICADO, ss = "https://docs.google.com/spreadsheets/d/1z-cXrCe0ZRMRBG2rqW2BmG09HEa4tMmplXhHMnLbRg4/edit#gid=668044240", 
+RS22_2025_COORDENADAS <- read_sheet("https://docs.google.com/spreadsheets/d/1teplPGKPT6R7Kfx1bXCcCBLQ0gHW8PFMS_6qBzkQdpk/edit?gid=178016067#gid=178016067", 
+                                        sheet = "Consolidado")
+
+AUX <- left_join(RS22_2025_SINAN_DECODIFICADO, 
+                   RS22_2025_COORDENADAS, 
+                   by = join_by(SINAN == Notificação))
+
+AUX[, c(3, 4)] <- AUX[, c(98, 99)]
+
+colnames(AUX)[c(3, 4)] <- c("Latitude", "Longitude")
+
+sheet_write(RS22_2025_SINAN_DECODIFICADO,
+            ss = "https://docs.google.com/spreadsheets/d/1z-cXrCe0ZRMRBG2rqW2BmG09HEa4tMmplXhHMnLbRg4/edit#gid=668044240",
             sheet = "Registros_SINAN")
 
 source("Informe_Arboviroses_2026_Dengue_PR.R")
@@ -296,9 +263,9 @@ source("Informe_Arboviroses_2026_SIG.R")
 RS22_2025_REDE_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1cFq9tkfZYApiOdtJHM1WrQtwIMtUMKt8H2NZ9rDyduU/edit?gid=863361484#gid=863361484", 
                                         sheet = "Consolidado")
 
-RS22_2025_RG_MUNICIPIOS <- read_sheet("https://docs.google.com/spreadsheets/d/1KQKPavrdg8ki2IK0nx_ZhbnrQlNuy3cY0kk_gpLUqDU/edit?gid=1585473376#gid=1585473376")
+RS22_2025_RG_MUNICIPIOS <- read_sheet("https://docs.google.com/spreadsheets/d/1LTIvSToBinoLVUa2Wdp4_gdEb3Zj63J5sOBgWXXc-s4/edit?gid=1585473376#gid=1585473376")
 
-RS22_2025_RG_LOCALIDADES <- read_sheet("https://docs.google.com/spreadsheets/d/176wM7py-JuHl5gmQXnEzP_tohiNdCAItTiQ5VW1FUDk/edit?gid=877642872#gid=877642872")
+RS22_2025_RG_LOCALIDADES <- read_sheet("https://docs.google.com/spreadsheets/d/1jvWfa235GoyUE5-HMLAONTETgcFV91UoHCPTaVE0c0U/edit?gid=877642872#gid=877642872")
 
 RS22_2025_PE <- read_sheet("https://docs.google.com/spreadsheets/d/1JdRMkASZRTpDa9V7lBIXY5aJxlLoSp01PVQ_WmziyjA/edit?gid=863361484#gid=863361484", 
                            sheet = "Consolidado")
@@ -731,7 +698,29 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    RS22_GRAF_2025_Hospitalizados,
    RS22_GRAF_2025_Descartados,
    RS22_GRAF_2025_Inconclusivos,
-   AUX,
+   RS22_GRAF_2025_Incidencia_Provaveis,
+   RS22_GRAF_Escolaridade,
+   RS22_GRAF_LACEN_MUNIC_CHIK,
+   RS22_2025_GRAF_IPO_ARAPUA,
+   RS22_2025_GRAF_IPO_ARIRANHA,
+   RS22_2025_GRAF_IPO_CANDIDO,
+   RS22_2025_GRAF_IPO_CRUZMALTINA,
+   RS22_2025_GRAF_IPO_GODOY,
+   RS22_2025_GRAF_IPO_IVAIPORA,
+   RS22_2025_GRAF_IPO_JARDIM,
+   RS22_2025_GRAF_IPO_Lidianopolis,
+   RS22_2025_GRAF_IPO_LUNARDELLI,
+   RS22_2025_GRAF_IPO_MANUEL_RIBAS,
+   RS22_2025_GRAF_IPO_MATO_RICO,
+   RS22_2025_GRAF_IPO_NOVA_TEBAS,
+   RS22_2025_GRAF_IPO_RIO_BRANCO,
+   RS22_2025_GRAF_IPO_ROSARIO,
+   RS22_2025_GRAF_IPO_SANTA_MARIA,
+   RS22_2025_GRAF_IPO_SAO_JOAO,
+   AUX_SEM,
+   Quartil_1,
+   Quartil_3,
+   Theme,
    AUX_GRAF,
    AUX_HIST_CHIK_CONF_LIST,
    AUX_HIST_CHIK_NOT_LIST,
@@ -770,33 +759,22 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    SINAN_CHIK_RS,
    RS22_GRAF_2025_Encerramento,
    RS22_GRAF_LACEN_MUNIC,
-   RS22_2025_INFORME_Pag_05,
-   RS22_2025_INFORME_Pag_06,
-   RS22_2025_INFORME_Pag_07,
-   RS22_2025_INFORME_Pag_08,
    Fonte,
    Fonte_1,
    Fonte_2,
    i,
    O,
    j,
-   N
+   N,
    ID_REG,
    nrow,
-   Periodos_Epidêmicos_RS,
-   Periodos_Epidêmicos_SEDE,
    RS,
    SE,
    Theme_Hist,
-   RS_2025_GRAF_Histograma_Confirmados_01,
-   RS_2025_GRAF_Histograma_Confirmados_02,
-   RS_2025_GRAF_Histograma_Notificados_01,
-   RS_2025_GRAF_Histograma_Notificados_02,
-   RS_2025_GRAF_Histograma_Provaveis_01,
-   RS_2025_GRAF_Histograma_Provaveis_02,
+   RS_2025_GRAF_Histograma_Confirmados,
+   RS_2025_GRAF_Histograma_Provaveis,
    RS_2025_GRAF_CE_Confirmados_SEDE,
    RS_2025_GRAF_CE_Notificados_SEDE,
-   RS_2025_CE_SEDE,
    PR_2025_GRAF_CHIK_Incidência,
    PR_2025_GRAF_CHIK_Notificados,
    PR_2025_GRAF_INCIDENCIA_PR,
@@ -810,7 +788,6 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    PR_2025_DENGUE_SINAIS_Notificados,
    PR_2025_ZIKA_CHIK_Notificados,
    PR_DENGUE_2025_GRAF_SINAIS,
-   RS22_2025_GRAF_1,
    RS22_2025_GRAF_CHK_Conf,
    RS22_2025_GRAF_CHK_Not,
    RS22_GRAF_2025_SINAIS,
@@ -819,25 +796,45 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    RS22_2025_GRAF_Sorotipo,
    RS22_GRAF_2025_US_DETEC,
    RS22_GRAF_2025_US_TOTAL,
-   RS_2025_GRAF_CE_Provaveis_SEDE,
+   RS_CE_Confirmados_JARDIM,
+   RS_CE_Confirmados_JARDIM_BASE,
    RS_2025_GRAF_CE_Confirmados_SEDE,
    RS_2025_GRAF_CE_Notificados_SEDE,
-   RS_2025_GRAF_Histograma_Provaveis_02,
-   RS_2025_GRAF_Histograma_Provaveis_01,
-   RS_2025_GRAF_Histograma_Confirmados_02,
-   RS_2025_GRAF_Histograma_Confirmados_01,
-   RS_2025_GRAF_Histograma_Notificados_02,
-   RS_2025_GRAF_Histograma_Notificados_01,
+   RS_2025_GRAF_Histograma_Provaveis,
+   RS_2025_GRAF_Histograma_Confirmados,
+   RS_2025_GRAF_Histograma_Notificados,
    RS_2025_GRAF_CE_Confirmados_JARDIM,
    RS_2025_GRAF_CE_Provaveis_JARDIM,
    RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI,
-   RS_2025_GRAF_CHIK_Histograma_Confirmados_01,
-   RS_2025_GRAF_CHIK_Histograma_Confirmados_02,
-   RS_2025_GRAF_CHIK_Histograma_Notificados_01,
-   RS_2025_GRAF_CHIK_Histograma_Notificados_02,
-   RS_2025_GRAF_CHIK_Histograma_Provaveis_01,
-   RS_2025_GRAF_CHIK_Histograma_Provaveis_02,
+   RS_2025_GRAF_CHIK_Histograma_Confirmados,
+   RS_2025_GRAF_CHIK_Histograma_Notificados,
+   RS_2025_GRAF_CHIK_Histograma_Provaveis,
    RS_2025_GRAF_PIRAMIDE,
+   RS_CE_Confirmados_SAO_JOAO_BASE,
+   RS_CE_Confirmados_SAO_JOAO_DO_IVAI,
+   RS_CE_Confirmados_SEDE_Base,
+   RS_CE_Notificados_Base,
+   RS_CE_Notificados_JARDIM,
+   RS_CE_Notificados_JARDIM_BASE,
+   RS_CE_Notificados_SAO_JOAO,
+   RS_CE_Notificados_SAO_JOAO_BASE,
+   RS_CE_Notificados_SEDE_Base,
+   RS22_2025_GRAF_IDO_ARAPUA,
+   RS22_2025_GRAF_IDO_ARIRANHA,
+   RS22_2025_GRAF_IDO_CANDIDO,
+   RS22_2025_GRAF_IDO_CRUZMALTINA,
+   RS22_2025_GRAF_IDO_GODOY,
+   RS22_2025_GRAF_IDO_IVAIPORA,
+   RS22_2025_GRAF_IDO_JARDIM,
+   RS22_2025_GRAF_IDO_Lidianopolis,
+   RS22_2025_GRAF_IDO_LUNARDELLI,
+   RS22_2025_GRAF_IDO_MANUEL_RIBAS,
+   RS22_2025_GRAF_IDO_MATO_RICO,
+   RS22_2025_GRAF_IDO_NOVA_TEBAS,
+   RS22_2025_GRAF_IDO_RIO_BRANCO,
+   RS22_2025_GRAF_IDO_ROSARIO,
+   RS22_2025_GRAF_IDO_SANTA_MARIA,
+   RS22_2025_GRAF_IDO_SAO_JOAO,
    PR_CHIK_2025_SINAN,
    RS_2025_SE_Confirmados,
    RS_2025_SE_Notificados,
@@ -847,6 +844,9 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    RS_CE_Notificados_SEDE,
    RS_Serie_Historica,
    AUX_VII,
-   DENGON2025
+   DENGON2025,
+   RS22_2025_GRAF_SORO_CHIK_REAG,
+   RS22_2025_GRAF_SORO_CHIK_TOTAL,
+   AUX
 )
 
