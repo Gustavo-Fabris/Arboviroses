@@ -12,39 +12,39 @@ Theme <- function(){theme(axis.text.x = element_text(angle = 85,
                           ) 
 }
 
-AUX_SEM <- as.character(c("2025/1",  "2025/2", "2025/3", 
-                      "2025/4",  "2025/5",  "2025/6",  
-                      "2025/7",  "2025/8",  "2025/9",  
-                      "2025/10",  "2025/11",  "2025/12",  
-                      "2025/13",  "2025/14",  "2025/15",  
-                      "2025/16",  "2025/17",  "2025/18",  
-                      "2025/19",  "2025/20",  "2025/21",  
-                      "2025/22",  "2025/23",  
-                      "2025/24",  "2025/25",  "2025/26",  
-                      "2025/27",  "2025/28",  "2025/29",  
-                      "2025/30",  "2025/31",  "2025/32", 
-                      "2025/33",  "2025/34",  "2025/35",  
-                      "2025/36",  "2025/37",  "2025/38",  
-                      "2025/39",  "2025/40",  "2025/41",  
-                      "2025/42",  "2025/43",  "2025/44",  
-                      "2025/45",  "2025/46",  "2025/47",  
-                      "2025/48",  "2025/49",  "2025/50",  
-                      "2025/51",  "2025/52")
+AUX_SEM <- as.character(c("2026/1",  "2026/2", "2026/3", 
+                      "2026/4",  "2026/5",  "2026/6",  
+                      "2026/7",  "2026/8",  "2026/9",  
+                      "2026/10",  "2026/11",  "2026/12",  
+                      "2026/13",  "2026/14",  "2026/15",  
+                      "2026/16",  "2026/17",  "2026/18",  
+                      "2026/19",  "2026/20",  "2026/21",  
+                      "2026/22",  "2026/23",  
+                      "2026/24",  "2026/25",  "2026/26",  
+                      "2026/27",  "2026/28",  "2026/29",  
+                      "2026/30",  "2026/31",  "2026/32", 
+                      "2026/33",  "2026/34",  "2026/35",  
+                      "2026/36",  "2026/37",  "2026/38",  
+                      "2026/39",  "2026/40",  "2026/41",  
+                      "2026/42",  "2026/43",  "2026/44",  
+                      "2026/45",  "2026/46",  "2026/47",  
+                      "2026/48",  "2026/49",  "2026/50",  
+                      "2026/51",  "2026/52")
 )
 
 ####################################################################################################################
 ################Trabalhando as tabelas base dos Canais Endêmicos####################################################
 ####################################################################################################################
 
-#######     Eliminando a SE 53 Inexistente no período no ano 2025    #####
+#######     Eliminando a SE 53 Inexistente no período no ano 2026    #####
 
 RS_CE_Notificados_Base <- RS_CE_Notificados_Base[, -54]
-RS_2025_SE_Notificados <- RS_2025_SE_Notificados[, -54]
+RS_2026_SE_Notificados <- RS_2026_SE_Notificados[, -54]
 
 ######     Canal Endêmico    NOTIFICADOS#####
 
-RS_CE_Notificados_Base[(nrow(RS_CE_Notificados_Base) +1), 1] <- "2025"
-RS_CE_Notificados_Base[nrow(RS_CE_Notificados_Base), 2:53] <- as.integer(data.frame(RS_2025_SE_Notificados[nrow(RS_2025_SE_Notificados), 2:53]))
+RS_CE_Notificados_Base[(nrow(RS_CE_Notificados_Base) +1), 1] <- "2026"
+RS_CE_Notificados_Base[nrow(RS_CE_Notificados_Base), 2:53] <- as.integer(data.frame(RS_2026_SE_Notificados[nrow(RS_2026_SE_Notificados), 2:53]))
 
 #####################################################################################################################
 #####                   Utilizando objetos auxiliares porque se transpor o data frame                   #############
@@ -124,9 +124,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
     labs(caption = Fonte,
-       title = "Canal Endêmico Casos NOTIFICADOS - 2025") +
+       title = "Canal Endêmico Casos NOTIFICADOS - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -134,7 +134,7 @@ RS_2025_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -147,15 +147,15 @@ RS_2025_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
  
 ####         Canal Endêmico CONFIRMADOS              ####
 
-#######     Eliminando a SE 53 Inexistente no período no ano 2025    #####
+#######     Eliminando a SE 53 Inexistente no período no ano 2026    #####
 
 RS_CE_Confirmados_Base <- RS_CE_Confirmados_Base[, -54]
-RS_2025_SE_Confirmados <- RS_2025_SE_Confirmados[, -54]
+RS_2026_SE_Confirmados <- RS_2026_SE_Confirmados[, -54]
 
 ######     Canal Endêmico    CONFIRMADOS#####
 
-RS_CE_Confirmados_Base[(nrow(RS_CE_Confirmados_Base) +1), 1] <- "2025"
-RS_CE_Confirmados_Base[nrow(RS_CE_Confirmados_Base), 2:53] <- as.integer(data.frame(RS_2025_SE_Confirmados[nrow(RS_2025_SE_Confirmados), 2:53]))
+RS_CE_Confirmados_Base[(nrow(RS_CE_Confirmados_Base) +1), 1] <- "2026"
+RS_CE_Confirmados_Base[nrow(RS_CE_Confirmados_Base), 2:53] <- as.integer(data.frame(RS_2026_SE_Confirmados[nrow(RS_2026_SE_Confirmados), 2:53]))
 
 #####################################################################################################################
 #####                   Utilizando objetos auxiliares porque se transpor o data frame                   #############
@@ -239,9 +239,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
    labs(caption = Fonte,
-       title = "Canal Endêmico Casos CONFIRMADOS - 2025") +
+       title = "Canal Endêmico Casos CONFIRMADOS - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -249,7 +249,7 @@ RS_2025_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -277,7 +277,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -308,9 +308,9 @@ AUX[nrow(AUX), 1] <- "Total"
 
 ####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
 
-assign(paste0("RS", "_2025_SE_Provaveis"), AUX)
+assign(paste0("RS", "_2026_SE_Provaveis"), AUX)
 
-assign(paste0("RS", RS, "_2025_SE_Provaveis"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Provaveis"), AUX)
 
 ###     CANAL ENDÊMICO Prováveis         ####
 
@@ -324,16 +324,16 @@ AUX_GRAF$Sem_Epidemiológica <- RS_CE_Confirmados$Semana_Epidemiológica
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_SE_Provaveis <- RS_2025_SE_Provaveis[, -54]
+RS_2026_SE_Provaveis <- RS_2026_SE_Provaveis[, -54]
 
-AUX_GRAF[, 9] <- t(RS_2025_SE_Provaveis[nrow(RS_2025_SE_Provaveis), -1 ])
+AUX_GRAF[, 9] <- t(RS_2026_SE_Provaveis[nrow(RS_2026_SE_Provaveis), -1 ])
 
-colnames(AUX_GRAF)[9] <- "2025"
+colnames(AUX_GRAF)[9] <- "2026"
 
-RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, 
+RS_2026_GRAF_CE_Provaveis <- ggplot(AUX_GRAF, 
                                     aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos PROVÁVEIS - 2025") +
+       title = "Canal Endêmico Casos PROVÁVEIS - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -341,7 +341,7 @@ RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF,
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -358,8 +358,8 @@ RS_2025_GRAF_CE_Provaveis <- ggplot(AUX_GRAF,
 
 ######Canal Endêmico NOTIFICADOS#####
 
-RS_CE_Notificados_SEDE_Base[(nrow(RS_CE_Notificados_SEDE_Base) +1), 1] <- "2025"
-RS_CE_Notificados_SEDE_Base[nrow(RS_CE_Notificados_SEDE_Base), 2:54] <- as.integer(data.frame(RS22_2025_SE_Notificados[6, 2:54]))
+RS_CE_Notificados_SEDE_Base[(nrow(RS_CE_Notificados_SEDE_Base) +1), 1] <- "2026"
+RS_CE_Notificados_SEDE_Base[nrow(RS_CE_Notificados_SEDE_Base), 2:54] <- as.integer(data.frame(RS22_2026_SE_Notificados[6, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -443,9 +443,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_SEDE))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos NOTIFICADOS Ivaiporã- 2025") +
+       title = "Canal Endêmico Casos NOTIFICADOS Ivaiporã- 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -453,7 +453,7 @@ RS_2025_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -466,8 +466,8 @@ RS_2025_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ####Canal Endêmico CONFIRMADOS####
 
-RS_CE_Confirmados_SEDE_Base[(nrow(RS_CE_Confirmados_SEDE_Base) +1), 1] <- "2025"
-RS_CE_Confirmados_SEDE_Base[nrow(RS_CE_Confirmados_SEDE_Base), 2:54] <- as.integer(data.frame(RS22_2025_SE_Confirmados[6, 2:54]))
+RS_CE_Confirmados_SEDE_Base[(nrow(RS_CE_Confirmados_SEDE_Base) +1), 1] <- "2026"
+RS_CE_Confirmados_SEDE_Base[nrow(RS_CE_Confirmados_SEDE_Base), 2:54] <- as.integer(data.frame(RS22_2026_SE_Confirmados[6, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -549,9 +549,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_SEDE))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos CONFIRADOS Ivaiporã- 2025") +
+       title = "Canal Endêmico Casos CONFIRADOS Ivaiporã- 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -559,7 +559,7 @@ RS_2025_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -576,11 +576,11 @@ RS_2025_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
 
-RS_2025_Casos_Provaveis_SEDE <- (RS22_2025_SE_Provaveis[6, 2: 54])
+RS_2026_Casos_Provaveis_SEDE <- (RS22_2026_SE_Provaveis[6, 2: 54])
 
-rownames(RS_2025_Casos_Provaveis_SEDE)[1] <- "Provaveis"
+rownames(RS_2026_Casos_Provaveis_SEDE)[1] <- "Provaveis"
 
-RS_2025_Casos_Provaveis_SEDE <- t(as.data.frame(RS_2025_Casos_Provaveis_SEDE))
+RS_2026_Casos_Provaveis_SEDE <- t(as.data.frame(RS_2026_Casos_Provaveis_SEDE))
 
 ###CANAL ENDÊMICO Prováveis####
 
@@ -590,15 +590,15 @@ AUX_GRAF <- RS_CE_Confirmados_SEDE[,]
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-AUX_GRAF[, 8] <- RS_2025_Casos_Provaveis_SEDE[-53, 1]
+AUX_GRAF[, 8] <- RS_2026_Casos_Provaveis_SEDE[-53, 1]
 
 AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
-RS_2025_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos PROVÁVEIS Ivaiporã - 2025",
+       title = "Canal Endêmico Casos PROVÁVEIS Ivaiporã - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
@@ -618,7 +618,7 @@ RS_2025_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-rm(RS_2025_Casos_Provaveis_SEDE, AUX_GRAF)
+rm(RS_2026_Casos_Provaveis_SEDE, AUX_GRAF)
 
 ####################################################################################################################
 ############      Trabalhando a tabela base do Canal Endêmico - IVAIPORÃ      ######################################
@@ -626,8 +626,8 @@ rm(RS_2025_Casos_Provaveis_SEDE, AUX_GRAF)
 
 ######Canal Endêmico NOTIFICADOS#####
 
-RS_CE_Notificados_JARDIM_BASE[(nrow(RS_CE_Notificados_JARDIM_BASE) +1), 1] <- "2025"
-RS_CE_Notificados_JARDIM_BASE[nrow(RS_CE_Notificados_JARDIM_BASE), 2:54] <- as.integer(data.frame(RS22_2025_SE_Notificados[7, 2:54]))
+RS_CE_Notificados_JARDIM_BASE[(nrow(RS_CE_Notificados_JARDIM_BASE) +1), 1] <- "2026"
+RS_CE_Notificados_JARDIM_BASE[nrow(RS_CE_Notificados_JARDIM_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Notificados[7, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -709,9 +709,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_JARDIM))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM 
 
-RS_2025_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos NOTIFICADOS Jardim Alegre - 2025") +
+       title = "Canal Endêmico Casos NOTIFICADOS Jardim Alegre - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -719,7 +719,7 @@ RS_2025_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -732,8 +732,8 @@ RS_2025_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ####Canal Endêmico CONFIRMADOS####
 
-RS_CE_Confirmados_JARDIM_BASE[(nrow(RS_CE_Confirmados_JARDIM_BASE) +1), 1] <- "2025"
-RS_CE_Confirmados_JARDIM_BASE[nrow(RS_CE_Confirmados_JARDIM_BASE), 2:54] <- as.integer(data.frame(RS22_2025_SE_Confirmados[7, 2:54]))
+RS_CE_Confirmados_JARDIM_BASE[(nrow(RS_CE_Confirmados_JARDIM_BASE) +1), 1] <- "2026"
+RS_CE_Confirmados_JARDIM_BASE[nrow(RS_CE_Confirmados_JARDIM_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Confirmados[7, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -815,9 +815,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_JARDIM))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos CONFIRADOS Jardim Alegre - 2025") +
+       title = "Canal Endêmico Casos CONFIRADOS Jardim Alegre - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -825,7 +825,7 @@ RS_2025_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -842,11 +842,11 @@ RS_2025_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
 
-RS_2025_Casos_Provaveis_JARDIM <- (RS22_2025_SE_Provaveis[7, 2: 54])
+RS_2026_Casos_Provaveis_JARDIM <- (RS22_2026_SE_Provaveis[7, 2: 54])
 
-rownames(RS_2025_Casos_Provaveis_JARDIM)[1] <- "Provaveis"
+rownames(RS_2026_Casos_Provaveis_JARDIM)[1] <- "Provaveis"
 
-RS_2025_Casos_Provaveis_JARDIM <- t(as.data.frame(RS_2025_Casos_Provaveis_JARDIM))
+RS_2026_Casos_Provaveis_JARDIM <- t(as.data.frame(RS_2026_Casos_Provaveis_JARDIM))
 
 ###CANAL ENDÊMICO Prováveis####
 
@@ -856,16 +856,16 @@ AUX_GRAF <- RS_CE_Confirmados_JARDIM[,]
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-AUX_GRAF[, 8] <- RS_2025_Casos_Provaveis_JARDIM[-53, 1]
+AUX_GRAF[, 8] <- RS_2026_Casos_Provaveis_JARDIM[-53, 1]
 
 AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
-RS_2025_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF, 
+RS_2026_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF, 
                                            aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos PROVÁVEIS Jardim Alegre - 2025",
+       title = "Canal Endêmico Casos PROVÁVEIS Jardim Alegre - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
@@ -885,7 +885,7 @@ RS_2025_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF,
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-rm(RS_2025_Casos_Provaveis_JARDIM, AUX_GRAF)
+rm(RS_2026_Casos_Provaveis_JARDIM, AUX_GRAF)
 
 ####################################################################################################################
 ############      Trabalhando a tabela base do Canal Endêmico - São João      ######################################
@@ -893,8 +893,8 @@ rm(RS_2025_Casos_Provaveis_JARDIM, AUX_GRAF)
 
 ######Canal Endêmico NOTIFICADOS#####
 
-RS_CE_Notificados_SAO_JOAO_BASE[(nrow(RS_CE_Notificados_SAO_JOAO_BASE) +1), 1] <- "2025"
-RS_CE_Notificados_SAO_JOAO_BASE[nrow(RS_CE_Notificados_SAO_JOAO_BASE), 2:54] <- as.integer(data.frame(RS22_2025_SE_Notificados[16, 2:54]))
+RS_CE_Notificados_SAO_JOAO_BASE[(nrow(RS_CE_Notificados_SAO_JOAO_BASE) +1), 1] <- "2026"
+RS_CE_Notificados_SAO_JOAO_BASE[nrow(RS_CE_Notificados_SAO_JOAO_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Notificados[16, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -966,7 +966,7 @@ rm(AUX, AUX2)
 
 #####################################################################################################################################################################################
 #####################################################################################################################################################################################
-###CANAL ENDÊMICO NOTIFICADOS - IVAIPORÃ####
+###CANAL ENDÊMICO NOTIFICADOS - São_João do Ivaí####
 
 AUX_GRAF <- RS_CE_Notificados_SAO_JOAO
 
@@ -976,9 +976,9 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_SAO_JOAO))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
+RS_2026_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos NOTIFICADOS São João do Ivaí - 2025") +
+       title = "Canal Endêmico Casos NOTIFICADOS São João do Ivaí - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -986,7 +986,7 @@ RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -999,8 +999,8 @@ RS_2025_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
 
 ####Canal Endêmico CONFIRMADOS####
 
-RS_CE_Confirmados_SAO_JOAO_BASE[(nrow(RS_CE_Confirmados_SAO_JOAO_BASE) +1), 1] <- "2025"
-RS_CE_Confirmados_SAO_JOAO_BASE[nrow(RS_CE_Confirmados_SAO_JOAO_BASE), 2:54] <- as.integer(data.frame(RS22_2025_SE_Confirmados[16, 2:54]))
+RS_CE_Confirmados_SAO_JOAO_BASE[(nrow(RS_CE_Confirmados_SAO_JOAO_BASE) +1), 1] <- "2026"
+RS_CE_Confirmados_SAO_JOAO_BASE[nrow(RS_CE_Confirmados_SAO_JOAO_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Confirmados[16, 2:54]))
 
 ### Eliminando a SE 53
 
@@ -1082,10 +1082,10 @@ AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_SAO_JOAO_DO_IVAI))
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
+RS_2026_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
                                                        aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos CONFIRADOS São João do Ivaí - 2025") +
+       title = "Canal Endêmico Casos CONFIRADOS São João do Ivaí - 2026") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
             alpha = 0.9) +
@@ -1093,7 +1093,7 @@ RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
             fill = "#556B2F") +
   geom_area(aes(y = Quartil_1), 
             fill = "#DCDCDC") +
-  geom_line(aes(y = `2025`), 
+  geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
             linewidth = 1.5) +
@@ -1106,15 +1106,15 @@ RS_2025_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
 
 ####################################################################################################################################
 ####################################################################################################################################
-###############Canal Endêmico Prováveis - Jardim Alegre
+###############Canal Endêmico Prováveis - São João do Ivaí
 
 ####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
 
-RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI <- (RS22_2025_SE_Provaveis[7, 2: 54])
+RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI <- (RS22_2026_SE_Provaveis[16, 2: 54])
 
-rownames(RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI)[1] <- "Provaveis"
+rownames(RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI)[1] <- "Provaveis"
 
-RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI <- t(as.data.frame(RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI))
+RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI <- t(as.data.frame(RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI))
 
 ###CANAL ENDÊMICO Prováveis####
 
@@ -1124,16 +1124,16 @@ AUX_GRAF <- RS_CE_Confirmados_SAO_JOAO_DO_IVAI[,]
 
 AUX_GRAF$Sem_EPI <- AUX_SEM
 
-AUX_GRAF[, 8] <- RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI[-53, 1]
+AUX_GRAF[, 8] <- RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI[-53, 1]
 
 AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
 
 colnames(AUX_GRAF)[8] <- "Provaveis"
 
-RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
+RS_2026_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, 
                                                      aes(Ordem))  +
   labs(caption = Fonte,
-       title = "Canal Endêmico Casos PROVÁVEIS São João do Ivaí - 2025",
+       title = "Canal Endêmico Casos PROVÁVEIS São João do Ivaí - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
             fill = "#F0E68C",
@@ -1153,5 +1153,274 @@ RS_2025_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
                      label = AUX_GRAF$Sem_EPI) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-rm(RS_2025_Casos_Provaveis_SAO_JOAO_DO_IVAI, AUX_GRAF)
+rm(RS_2026_Casos_Provaveis_SAO_JOAO_DO_IVAI, AUX_GRAF)
+
+
+####################################################################################################################
+############      Trabalhando a tabela base do Canal Endêmico - São João      ######################################
+####################################################################################################################
+
+######Canal Endêmico NOTIFICADOS#####
+
+RS_CE_Notificados_LUNARDELLI_BASE[(nrow(RS_CE_Notificados_LUNARDELLI_BASE) +1), 1] <- "2026"
+RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Notificados[9, 2:54]))
+
+### Eliminando a SE 53
+
+RS_CE_Notificados_LUNARDELLI_BASE <- RS_CE_Notificados_LUNARDELLI_BASE[, -54]
+
+#####Utilizando objetos auxiliares porque se transpor o data frame direto ele transforma as variáveis em#############
+#####caracter.            NÃO FOI DESCARTADO AINDA OS PERÍODOS EPIDÊMICOS                               #############
+##### VERIFICAR SE PODE-SE UTILIZAR A MÉDIA COMO LIMITE INFERIOR.                                       #############
+
+AUX <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -6,]
+AUX[2, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -5,]
+AUX[3, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -4,]
+AUX[4, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -3,]
+AUX[5, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -2,]
+AUX[6, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -1,]
+AUX[7, ] <- RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) ,]
+
+AUX <- AUX[, -1]
+
+AUX <- t(AUX)
+
+AUX2 <-c(RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -6, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -5, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -4, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -3, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -2, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE) -1, 1],
+         RS_CE_Notificados_LUNARDELLI_BASE[nrow(RS_CE_Notificados_LUNARDELLI_BASE), 1])
+
+colnames(AUX) <- AUX2
+
+RS_CE_Notificados_LUNARDELLI <- AUX
+
+######     Criando a coluna de Quartil_1 no data frame     ###############
+
+Quartil_1 <- function(x) quantile(x, probs = 0.25)
+
+AUX <- apply(RS_CE_Notificados_LUNARDELLI[, 1:(ncol(RS_CE_Notificados_LUNARDELLI)-1)], 1 , Quartil_1)
+
+RS_CE_Notificados_LUNARDELLI <- as.data.frame(RS_CE_Notificados_LUNARDELLI)
+
+RS_CE_Notificados_LUNARDELLI$Quartil_1 <- AUX
+
+######     Criando a coluna de médiana no data.frame     #####################
+
+AUX <- apply(RS_CE_Notificados_LUNARDELLI[, 1: (ncol(RS_CE_Notificados_LUNARDELLI)-2)], 1 , median)
+
+RS_CE_Notificados_LUNARDELLI$Mediana <- AUX
+
+######     Criando a coluna de Quartil_1 no data frame     ###############
+
+Quartil_3 <- function(x) quantile(x, probs = 0.75)
+
+AUX <- apply(RS_CE_Notificados_LUNARDELLI[, 1:(ncol(RS_CE_Notificados_LUNARDELLI)-3)], 1 , Quartil_3)
+
+RS_CE_Notificados_LUNARDELLI$Quartil_3 <- AUX
+
+RS_CE_Notificados_LUNARDELLI[, (ncol(RS_CE_Notificados_LUNARDELLI)+1)] <- rownames(RS_CE_Notificados_LUNARDELLI)
+
+RS_CE_Notificados_LUNARDELLI <- RS_CE_Notificados_LUNARDELLI[, c(ncol(RS_CE_Notificados_LUNARDELLI), 1:(ncol(RS_CE_Notificados_LUNARDELLI) -1))]
+
+RS_CE_Notificados_LUNARDELLI[, 1] <- c(1:52)
+
+colnames(RS_CE_Notificados_LUNARDELLI)[1] <- "Semana_Epidemiológica"
+
+rownames(RS_CE_Notificados_LUNARDELLI) <- c(1:nrow(RS_CE_Notificados_LUNARDELLI))
+
+rm(AUX, AUX2)
+
+#####################################################################################################################################################################################
+#####################################################################################################################################################################################
+###CANAL ENDÊMICO NOTIFICADOS - São_João do Ivaí####
+
+AUX_GRAF <- RS_CE_Notificados_LUNARDELLI
+
+AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Notificados_LUNARDELLI))
+
+###                        Puxando o período sazonal atual para o gráfico de linhas
+
+AUX_GRAF$Sem_EPI <- AUX_SEM
+
+RS_2026_GRAF_CE_Notificados_LUNARDELLI <- ggplot(AUX_GRAF, aes(Ordem))  +
+  labs(caption = Fonte,
+       title = "Canal Endêmico Casos NOTIFICADOS Lunardelli - 2026") +
+  geom_area(aes(y = Quartil_3), 
+            fill = "#F0E68C",
+            alpha = 0.9) +
+  geom_area(aes(y = Mediana), 
+            fill = "#556B2F") +
+  geom_area(aes(y = Quartil_1), 
+            fill = "#DCDCDC") +
+  geom_line(aes(y = `2026`), 
+            stat = "identity", 
+            color = "black", 
+            linewidth = 1.5) +
+  xlab("Semana Epidemiológica") +
+  ylab("Número de Casos") +
+  Theme() +
+  scale_x_continuous(breaks = c(1:52), 
+                     label = AUX_GRAF$Sem_EPI) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+
+####Canal Endêmico CONFIRMADOS####
+
+RS_CE_Confirmados_LUNARDELLI_BASE[(nrow(RS_CE_Confirmados_LUNARDELLI_BASE) +1), 1] <- "2026"
+RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE), 2:54] <- as.integer(data.frame(RS22_2026_SE_Confirmados[9, 2:54]))
+
+### Eliminando a SE 53
+
+RS_CE_Confirmados_LUNARDELLI_BASE <- RS_CE_Confirmados_LUNARDELLI_BASE[, -54]
+
+#####Utilizando objetos auxiliares porque se transpor o data frame direto ele transforma as variáveis em#############
+#####caracter.            NÃO FOI DESCARTADO AINDA OS PERÍODOS EPIDÊMICOS                               #############
+##### VERIFICAR SE PODE-SE UTILIZAR A MÉDIA COMO LIMITE INFERIOR.                                       #############
+
+AUX <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -6,]
+AUX[2, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -5,]
+AUX[3, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -4,]
+AUX[4, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -3,]
+AUX[5, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -2,]
+AUX[6, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -1,]
+AUX[7, ] <- RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) ,]
+
+AUX <- AUX[, -1]
+
+AUX <- t(AUX)
+
+AUX2 <-c(RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -6, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -5, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -4, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -3, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -2, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE) -1, 1],
+         RS_CE_Confirmados_LUNARDELLI_BASE[nrow(RS_CE_Confirmados_LUNARDELLI_BASE), 1])
+
+colnames(AUX) <- AUX2
+
+RS_CE_Confirmados_LUNARDELLI <- AUX
+
+######     Criando a coluna de Quartil_1 no data frame     ###############
+
+Quartil_1 <- function(x) quantile(x, probs = 0.25)
+
+AUX <- apply(RS_CE_Confirmados_LUNARDELLI[, 1:(ncol(RS_CE_Confirmados_LUNARDELLI)-1)], 1 , Quartil_1)
+
+RS_CE_Confirmados_LUNARDELLI <- as.data.frame(RS_CE_Confirmados_LUNARDELLI)
+
+RS_CE_Confirmados_LUNARDELLI$Quartil_1 <- AUX
+
+######     Criando a coluna de médiana no data.frame     #####################
+
+AUX <- apply(RS_CE_Confirmados_LUNARDELLI[, 1: (ncol(RS_CE_Confirmados_LUNARDELLI)-2)], 1 , median)
+
+RS_CE_Confirmados_LUNARDELLI$Mediana <- AUX
+
+######     Criando a coluna de Quartil_1 no data frame     ###############
+
+Quartil_3 <- function(x) quantile(x, probs = 0.75)
+
+AUX <- apply(RS_CE_Confirmados_LUNARDELLI[, 1:(ncol(RS_CE_Confirmados_LUNARDELLI)-3)], 1 , Quartil_3)
+
+RS_CE_Confirmados_LUNARDELLI$Quartil_3 <- AUX
+
+RS_CE_Confirmados_LUNARDELLI[, (ncol(RS_CE_Confirmados_LUNARDELLI)+1)] <- rownames(RS_CE_Confirmados_LUNARDELLI)
+
+RS_CE_Confirmados_LUNARDELLI <- RS_CE_Confirmados_LUNARDELLI[, c(ncol(RS_CE_Confirmados_LUNARDELLI), 1:(ncol(RS_CE_Confirmados_LUNARDELLI) -1))]
+
+RS_CE_Confirmados_LUNARDELLI[, 1] <- c(1:52)
+
+colnames(RS_CE_Confirmados_LUNARDELLI)[1] <- "Semana_Epidemiológica"
+
+rownames(RS_CE_Confirmados_LUNARDELLI) <- c(1:nrow(RS_CE_Confirmados_LUNARDELLI))
+
+rm(AUX, AUX2)
+
+#####################################################################################################################################################################################
+#####################################################################################################################################################################################
+###CANAL ENDÊMICO CONFIRMADOS - Lunardelli ####
+
+AUX_GRAF <- RS_CE_Confirmados_LUNARDELLI
+
+AUX_GRAF$Ordem <- c(1: nrow(RS_CE_Confirmados_LUNARDELLI))
+
+###                        Puxando o período sazonal atual para o gráfico de linhas
+
+AUX_GRAF$Sem_EPI <- AUX_SEM
+
+RS_2026_GRAF_CE_Confirmados_LUNARDELLI <- ggplot(AUX_GRAF, 
+                                                 aes(Ordem))  +
+  labs(caption = Fonte,
+       title = "Canal Endêmico Casos CONFIRADOS Lunardelli - 2026") +
+  geom_area(aes(y = Quartil_3), 
+            fill = "#F0E68C",
+            alpha = 0.9) +
+  geom_area(aes(y = Mediana), 
+            fill = "#556B2F") +
+  geom_area(aes(y = Quartil_1), 
+            fill = "#DCDCDC") +
+  geom_line(aes(y = `2026`), 
+            stat = "identity", 
+            color = "black", 
+            linewidth = 1.5) +
+  xlab("Semana Epidemiológica") +
+  ylab("Número de Casos") +
+  Theme() +
+  scale_x_continuous(breaks = c(1:52), 
+                     label = AUX_GRAF$Sem_EPI) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+
+####################################################################################################################################
+####################################################################################################################################
+###############Canal Endêmico Prováveis - Lunardelli
+
+####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
+
+RS_2026_Casos_Provaveis_LUNARDELLI <- (RS22_2026_SE_Provaveis[9, 2: 54])
+
+rownames(RS_2026_Casos_Provaveis_LUNARDELLI)[1] <- "Provaveis"
+
+RS_2026_Casos_Provaveis_LUNARDELLI <- t(as.data.frame(RS_2026_Casos_Provaveis_LUNARDELLI))
+
+###CANAL ENDÊMICO Prováveis####
+
+###Puxando os dados da tabela RS22_CE_Notificados e excluindo os períodos epidêmicos: 2015/16, 2019/20 e 2021/22
+
+AUX_GRAF <- RS_CE_Confirmados_LUNARDELLI[,]
+
+AUX_GRAF$Sem_EPI <- AUX_SEM
+
+AUX_GRAF[, 8] <- RS_2026_Casos_Provaveis_LUNARDELLI[-53, 1]
+
+AUX_GRAF$Ordem <- c(1: nrow(AUX_GRAF))
+
+colnames(AUX_GRAF)[8] <- "Provaveis"
+
+RS_2026_GRAF_CE_Provaveis_LUNARDELLI <- ggplot(AUX_GRAF, 
+                                               aes(Ordem))  +
+  labs(caption = Fonte,
+       title = "Canal Endêmico Casos PROVÁVEIS Lunardelli - 2026",
+       subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
+  geom_area(aes(y = Quartil_3), 
+            fill = "#F0E68C",
+            alpha = 0.9) +
+  geom_area(aes(y = Mediana), 
+            fill = "#556B2F") +
+  geom_area(aes(y = Quartil_1), 
+            fill = "#DCDCDC") +
+  geom_line(aes(y = Provaveis), 
+            stat = "identity", 
+            color = "black", 
+            linewidth = 1.5) +
+  xlab("Semana Epidemiológica") +
+  ylab("Número de Casos") +
+  Theme() +
+  scale_x_continuous(breaks = c(1:52), 
+                     label = AUX_GRAF$Sem_EPI) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+
+rm(RS_2026_Casos_Provaveis_LUNARDELLI, AUX_GRAF)
 

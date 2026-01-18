@@ -269,262 +269,262 @@ colnames(AUX)<- c("RS", "SINAN", "Latitude", "Longitude",
                   "Sangramento_SNC", "Aumento_AST_ALT", "Miocardite", "Alteracao_Consciencia", "Outros_Orgaos", 
                   "Manifestacao_Hemorragica", "Epistaxe", "Gengivorragia", "Metrorragia", "Observacoes" )
 
-assign(paste0("RS", RS, "_2025_SINAN_DECODIFICADO"), AUX) 
+assign(paste0("RS", RS, "_2026_SINAN_DECODIFICADO"), AUX) 
 
-RS22_2025_SINAN_DECODIFICADO[, 56] <- as.character(RS22_2025_SINAN_DECODIFICADO[, 56])
+RS22_2026_SINAN_DECODIFICADO[, 56] <- as.character(RS22_2026_SINAN_DECODIFICADO[, 56])
 
-RS22_2025_SINAN_DECODIFICADO$Classificacao_Final[is.na(RS22_2025_SINAN_DECODIFICADO$Classificacao_Final)] <- "EM INVESTIGAÇÃO"
+RS22_2026_SINAN_DECODIFICADO$Classificacao_Final[is.na(RS22_2026_SINAN_DECODIFICADO$Classificacao_Final)] <- "EM INVESTIGAÇÃO"
 
-RS22_2025_SINAN_DECODIFICADO[, 56] <- as.factor(RS22_2025_SINAN_DECODIFICADO[, 56])
+RS22_2026_SINAN_DECODIFICADO[, 56] <- as.factor(RS22_2026_SINAN_DECODIFICADO[, 56])
 
 #################   Chikungunya/Paraná   ########################
 #################################################################
-PR_CHIK_2025_SINAN <- CHIKON2025 
+PR_CHIK_2026_SINAN <- CHIKON2026 
 
-PR_2025_SINAN_DECODIFICADO_CHIK <- PR_CHIK_2025_SINAN
+PR_2026_SINAN_DECODIFICADO_CHIK <- PR_CHIK_2026_SINAN
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ID_AGRAVO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ID_AGRAVO,
+PR_2026_SINAN_DECODIFICADO_CHIK$ID_AGRAVO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ID_AGRAVO,
                                                     label = c("Dengue", "Chikungunya"), 
                                                     levels = c("A90", "A92.0")
 )
 
 ###Sintomas###
-PR_2025_SINAN_DECODIFICADO_CHIK$FEBRE <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$FEBRE,
+PR_2026_SINAN_DECODIFICADO_CHIK$FEBRE <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$FEBRE,
                                                 label = c("SIM", "NÃO"), 
                                                 levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$MIALGIA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$MIALGIA,
+PR_2026_SINAN_DECODIFICADO_CHIK$MIALGIA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$MIALGIA,
                                                   label = c("SIM", "NÃO"), 
                                                   levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CEFALEIA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CEFALEIA,
+PR_2026_SINAN_DECODIFICADO_CHIK$CEFALEIA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CEFALEIA,
                                                    label = c("SIM", "NÃO"), 
                                                    levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$EXANTEMA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$EXANTEMA,
+PR_2026_SINAN_DECODIFICADO_CHIK$EXANTEMA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$EXANTEMA,
                                                    label = c("SIM", "NÃO"), 
                                                    levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$VOMITO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$VOMITO,
+PR_2026_SINAN_DECODIFICADO_CHIK$VOMITO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$VOMITO,
                                                  label = c("SIM", "NÃO"), 
                                                  levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$NAUSEA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$NAUSEA,
+PR_2026_SINAN_DECODIFICADO_CHIK$NAUSEA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$NAUSEA,
                                                  label = c("SIM", "NÃO"), 
                                                  levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$DOR_COSTAS <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$DOR_COSTAS,
+PR_2026_SINAN_DECODIFICADO_CHIK$DOR_COSTAS <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$DOR_COSTAS,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$DOR_RETRO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$DOR_RETRO,
+PR_2026_SINAN_DECODIFICADO_CHIK$DOR_RETRO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$DOR_RETRO,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CONJUNTVIT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CONJUNTVIT,
+PR_2026_SINAN_DECODIFICADO_CHIK$CONJUNTVIT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CONJUNTVIT,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ARTRALGIA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ARTRALGIA,
+PR_2026_SINAN_DECODIFICADO_CHIK$ARTRALGIA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ARTRALGIA,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ARTRITE <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ARTRITE,
+PR_2026_SINAN_DECODIFICADO_CHIK$ARTRITE <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ARTRITE,
                                                   label = c("SIM", "NÃO"), 
                                                   levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$PETEQUIA_N <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$PETEQUIA_N,
+PR_2026_SINAN_DECODIFICADO_CHIK$PETEQUIA_N <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$PETEQUIA_N,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$LEUCOPENIA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$LEUCOPENIA,
+PR_2026_SINAN_DECODIFICADO_CHIK$LEUCOPENIA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$LEUCOPENIA,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$LACO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$LACO,
+PR_2026_SINAN_DECODIFICADO_CHIK$LACO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$LACO,
                                                label = c("SIM", "NÃO"), 
                                                levels = c(1, 2)
 )
 
 ###Doenças Pré-existentes
 
-PR_2025_SINAN_DECODIFICADO_CHIK$DIABETES <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$DIABETES,
+PR_2026_SINAN_DECODIFICADO_CHIK$DIABETES <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$DIABETES,
                                                    label = c("SIM", "NÃO"), 
                                                    levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$HEMATOLOG <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$HEMATOLOG,
+PR_2026_SINAN_DECODIFICADO_CHIK$HEMATOLOG <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$HEMATOLOG,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$HEPATOPAT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$HEPATOPAT,
+PR_2026_SINAN_DECODIFICADO_CHIK$HEPATOPAT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$HEPATOPAT,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$RENAL <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$RENAL,
+PR_2026_SINAN_DECODIFICADO_CHIK$RENAL <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$RENAL,
                                                 label = c("SIM", "NÃO"), 
                                                 levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$HIPERTENSA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$HIPERTENSA,
+PR_2026_SINAN_DECODIFICADO_CHIK$HIPERTENSA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$HIPERTENSA,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ACIDO_PEPT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ACIDO_PEPT,
+PR_2026_SINAN_DECODIFICADO_CHIK$ACIDO_PEPT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ACIDO_PEPT,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$AUTO_IMUNE <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$AUTO_IMUNE,
+PR_2026_SINAN_DECODIFICADO_CHIK$AUTO_IMUNE <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$AUTO_IMUNE,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
 ####Outros####
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CS_GESTANT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CS_GESTANT,
+PR_2026_SINAN_DECODIFICADO_CHIK$CS_GESTANT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CS_GESTANT,
                                                      label = c("1_TRI", "2_TRI", "3_TRI", "IDADE GESTACIONAL IGN", "NÃO", "NÃO SE APLICA", "IGNORADO"), 
                                                      levels = c(1, 2, 3, 4, 5, 6, 9)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CS_ESCOL_N <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CS_ESCOL_N,
+PR_2026_SINAN_DECODIFICADO_CHIK$CS_ESCOL_N <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CS_ESCOL_N,
                                                      label = c("ANALFABETO", "1 a 4 SÉRIE DO FUNDAMENTAL INCOMPLETA", "4 SÉRIE DO FUNDAMENTAL COMPLETA", "5 a 8 SÉRIE DO FUNDAMENTAL INCOMPLETA", "FUNDAMENTAL COMPLETO", "ENSINO MÉDIO INCOMPLETO", "ENSINO MÉDIO COMPLETO", "SUPERIOR INCONPLETO", "SUPERIOR COMPLETO", "IGNORADO", "NÃO SE APLICA"), 
                                                      levels = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$RESUL_SORO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$RESUL_SORO,
+PR_2026_SINAN_DECODIFICADO_CHIK$RESUL_SORO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$RESUL_SORO,
                                                      label = c("REAGENTE", "NÃO REAGENTE", "INCONCLUSIVO", "NÃO REALIZADO"), 
                                                      levels = c(1, 2, 3, 4)
 )
 
 
-PR_2025_SINAN_DECODIFICADO_CHIK$RESUL_PCR_ <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$RESUL_PCR_,
+PR_2026_SINAN_DECODIFICADO_CHIK$RESUL_PCR_ <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$RESUL_PCR_,
                                                      label = c("DETECTÁVEL", "NÃO DETECTÀVEL", "INCONCLUSIVO", "NÃO REALIZADO"), 
                                                      levels = c(1, 2, 3, 4)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$SOROTIPO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$SOROTIPO,
+PR_2026_SINAN_DECODIFICADO_CHIK$SOROTIPO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$SOROTIPO,
                                                    label = c("I", "II", "III", "IV"), 
                                                    levels = c(1, 2, 3, 4)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CLASSI_FIN <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CLASSI_FIN,
+PR_2026_SINAN_DECODIFICADO_CHIK$CLASSI_FIN <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CLASSI_FIN,
                                                      label = c("DESCARTADO", "DENGUE", "D.S.A.", "IDENGUE_GRAVE", "CHIKUNGUNYA"), 
                                                      levels = c(5, 10, 11, 12, 13)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CRITERIO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CRITERIO,
+PR_2026_SINAN_DECODIFICADO_CHIK$CRITERIO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CRITERIO,
                                                    label = c("LABORATORIAL", "CLÍNICO-EPIDEMIOLÓGICO", "EM INVESTIGAÇÃO"), 
                                                    levels = c(1, 2, 3)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$TPAUTOCTO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$TPAUTOCTO,
+PR_2026_SINAN_DECODIFICADO_CHIK$TPAUTOCTO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$TPAUTOCTO,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$HOSPITALIZ <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$HOSPITALIZ,
+PR_2026_SINAN_DECODIFICADO_CHIK$HOSPITALIZ <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$HOSPITALIZ,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$EVOLUCAO <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$EVOLUCAO,
+PR_2026_SINAN_DECODIFICADO_CHIK$EVOLUCAO <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$EVOLUCAO,
                                                    label = c("CURA", "ÓBITO PELO AGRAVO", "ÓBITO POR OUTRAS CAUSAS","ÓBITO EM INVESTIGAÇÃO", "INDETERMINADO"), 
                                                    levels = c(1, 2, 3, 4, 9)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$CS_ZONA <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$CS_ZONA,
+PR_2026_SINAN_DECODIFICADO_CHIK$CS_ZONA <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$CS_ZONA,
                                                   label = c("URBANA", "RURAL", "PERIURBANA","INDETERMINADO"), 
                                                   levels = c(1, 2, 3, 9)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_LETAR <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_LETAR,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_LETAR <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_LETAR,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_HEPAT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_HEPAT,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_HEPAT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_HEPAT,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_LIQ <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_LIQ,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_LIQ <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_LIQ,
                                                    label = c("SIM", "NÃO"), 
                                                    levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_HIPOT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_HIPOT,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_HIPOT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_HIPOT,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_PLAQ <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_PLAQ,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_PLAQ <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_PLAQ,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_VOM <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_VOM,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_VOM <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_VOM,
                                                    label = c("SIM", "NÃO"), 
                                                    levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_SANG <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_SANG,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_SANG <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_SANG,
                                                     label = c("SIM", "NÃO"), 
                                                     levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_HEMAT <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_LETAR,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_HEMAT <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_LETAR,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
 
-PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_ABDOM <- factor(PR_2025_SINAN_DECODIFICADO_CHIK$ALRM_ABDOM,
+PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_ABDOM <- factor(PR_2026_SINAN_DECODIFICADO_CHIK$ALRM_ABDOM,
                                                      label = c("SIM", "NÃO"), 
                                                      levels = c(1, 2)
 )
-####PR_2025_SINAN_DECODIFICADO_CHIK$Municipio 
+####PR_2026_SINAN_DECODIFICADO_CHIK$Municipio 
 
-PR_2025_SINAN_DECODIFICADO_CHIK_AUX <- data.frame(COD = PR_2025_SINAN_DECODIFICADO_CHIK[,12], 
+PR_2026_SINAN_DECODIFICADO_CHIK_AUX <- data.frame(COD = PR_2026_SINAN_DECODIFICADO_CHIK[,12], 
                                                   Municipio = NA)
 
-for (i in PR_2025_SINAN_DECODIFICADO_CHIK[,12]){
-  PR_2025_SINAN_DECODIFICADO_CHIK_AUX[which(PR_2025_SINAN_DECODIFICADO_CHIK_AUX$COD == i), 2] <- BASE_IBGE_BRASIL[which(BASE_IBGE_BRASIL$Código.Município.Completo == i),13]
+for (i in PR_2026_SINAN_DECODIFICADO_CHIK[,12]){
+  PR_2026_SINAN_DECODIFICADO_CHIK_AUX[which(PR_2026_SINAN_DECODIFICADO_CHIK_AUX$COD == i), 2] <- BASE_IBGE_BRASIL[which(BASE_IBGE_BRASIL$Código.Município.Completo == i),13]
   
 }
 
-PR_2025_SINAN_DECODIFICADO_CHIK[,12] <- PR_2025_SINAN_DECODIFICADO_CHIK_AUX[, 2]
+PR_2026_SINAN_DECODIFICADO_CHIK[,12] <- PR_2026_SINAN_DECODIFICADO_CHIK_AUX[, 2]
 
 ####Município de Residência
 
-PR_2025_SINAN_DECODIFICADO_CHIK_AUX <- data.frame(COD = PR_2025_SINAN_DECODIFICADO_CHIK[,20], 
+PR_2026_SINAN_DECODIFICADO_CHIK_AUX <- data.frame(COD = PR_2026_SINAN_DECODIFICADO_CHIK[,20], 
                                                   Municipio = NA)
 
-for (i in PR_2025_SINAN_DECODIFICADO_CHIK[,20]){
-  PR_2025_SINAN_DECODIFICADO_CHIK_AUX[which(PR_2025_SINAN_DECODIFICADO_CHIK_AUX$COD == i), 2] <- BASE_IBGE_BRASIL[which(BASE_IBGE_BRASIL$Código.Município.Completo == i),13]
+for (i in PR_2026_SINAN_DECODIFICADO_CHIK[,20]){
+  PR_2026_SINAN_DECODIFICADO_CHIK_AUX[which(PR_2026_SINAN_DECODIFICADO_CHIK_AUX$COD == i), 2] <- BASE_IBGE_BRASIL[which(BASE_IBGE_BRASIL$Código.Município.Completo == i),13]
   
 }
 
-PR_2025_SINAN_DECODIFICADO_CHIK[,20] <- PR_2025_SINAN_DECODIFICADO_CHIK_AUX[, 2]
+PR_2026_SINAN_DECODIFICADO_CHIK[,20] <- PR_2026_SINAN_DECODIFICADO_CHIK_AUX[, 2]
 
-rm (PR_2025_SINAN_DECODIFICADO_CHIK_AUX)
+rm (PR_2026_SINAN_DECODIFICADO_CHIK_AUX)
 
-colnames(PR_2025_SINAN_DECODIFICADO_CHIK)<- c("RS", "SINAN", "Latitude", "Longitude", "Agravo", "Data_Notificacao", 
+colnames(PR_2026_SINAN_DECODIFICADO_CHIK)<- c("RS", "SINAN", "Latitude", "Longitude", "Agravo", "Data_Notificacao", 
                                               "ANO", "SE_Notificacao", "Data_Primeiros_Sintomas", "SE_Primeiros_Sintomas", 
                                               "UF_Notificacao", "Municipio", "Nome", "Data_Nascimento", "Idade", "Sexo", "Gestante", 
                                               "Escolaridade", "Nome_Mae", "Municipio_Residencia", "UF_Residencia", "RS_Residencia", 
@@ -542,3 +542,4 @@ colnames(PR_2025_SINAN_DECODIFICADO_CHIK)<- c("RS", "SINAN", "Latitude", "Longit
                                               "Taquicardia", "Extremidades_Frias", "Hipotensao", "Hematemese", "Melena", "Metrorragia_", 
                                               "Sangramento_SNC", "Aumento_AST_ALT", "Miocardite", "Alteracao_Consciencia", "Outros_Orgaos", 
                                               "Manifestacao_Hemorragica", "Epistaxe", "Gengivorragia", "Metrorragia", "Observacoes" )
+

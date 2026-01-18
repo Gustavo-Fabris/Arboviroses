@@ -1,20 +1,18 @@
 ####    Tabela de notificações SINAN    ###
 
-SINAN_DENGUE_RS <- DENGON2025 %>% 
+SINAN_DENGUE_RS <- DENGON2026 %>% 
   filter(ID_REGIONA == ID_REG | ID_RG_RESI == ID_REG)
 
-assign(paste0("RS", RS, "_2025_SINAN"), 
+assign(paste0("RS", RS, "_2026_SINAN"), 
        SINAN_DENGUE_RS) 
 
 ###############   Fazendo o mesmo com as bases DBF de chikungunya   ################################################
 
-SINAN_CHIK_RS <- CHIKON2025 %>% 
+SINAN_CHIK_RS <- CHIKON2026 %>% 
   filter(ID_REGIONA == ID_REG | ID_RG_RESI == ID_REG)
 
-assign(paste0("RS", RS, "_2025_SINAN_CHIKUNGUNYA"), 
+assign(paste0("RS", RS, "_2026_SINAN_CHIKUNGUNYA"), 
        SINAN_CHIK_RS) 
-
-###      Removendo tabela DENGON2025 e DENGON2025 já utilizada     ###
 
 #################################################################################################################
 ###     Construindo um for loop para realizar a tabela de notificados por semana epidemiológica               ###
@@ -32,7 +30,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -57,9 +55,9 @@ AUX[(nrow(AUX)+ 1),2:54] <- apply(AUX[,2:54], 2, sum)
 
 AUX[nrow(AUX), 1] <- "Total"
 
-assign(paste0("RS", RS, "_2025_SE_Notificados"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Notificados"), AUX)
 
-assign("RS_2025_SE_Notificados", AUX)
+assign("RS_2026_SE_Notificados", AUX)
 
 ########################################################################################################
 ###     Construindo um for loop para realizar a tabela de Confirmados por semana epidemiológica      ###
@@ -77,7 +75,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -106,9 +104,9 @@ AUX[(nrow(AUX)+ 1),2:54] <- apply(AUX[,2:54], 2, sum)
 
 AUX[nrow(AUX), 1] <- "Total"
 
-assign(paste0("RS", RS, "_2025_SE_Confirmados"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Confirmados"), AUX)
 
-assign("RS_2025_SE_Confirmados", AUX)
+assign("RS_2026_SE_Confirmados", AUX)
 
 ###################################################################################################
 ####       Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS      ####
@@ -310,9 +308,9 @@ AUX$Incidencia_Provaveis <- as.numeric(AUX$Incidencia_Provaveis)
 
 AUX$Em_Investigacao <- as.integer(AUX$Notificados) - (as.integer(AUX$Dengue + AUX$D_S_A + AUX$Dengue_Grave + AUX$Descartados))
 
-assign(paste0("RS", RS, "_2025_GERAL"), AUX)
+assign(paste0("RS", RS, "_2026_GERAL"), AUX)
 
-assign("RS_2025_GERAL", AUX)
+assign("RS_2026_GERAL", AUX)
 
 ####################################################################################################
 ####      Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade           #####
@@ -485,7 +483,7 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }                                             
 
-assign(paste0("RS", RS, "_2025_EXTRA"), AUX)
+assign(paste0("RS", RS, "_2026_EXTRA"), AUX)
 
 ####################################################################################################
 ####      Elaborando Quadro com dados de sexo, idade, zona de moradia e escolaridade           #####
@@ -749,7 +747,7 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }                                             
 
-assign(paste0("RS", RS, "_2025_EXTRA_Confirmados"), AUX)
+assign(paste0("RS", RS, "_2026_EXTRA_Confirmados"), AUX)
 
 ######################################################################################################
 ###         Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.            ###
@@ -880,7 +878,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }
 
-assign(paste0("RS", RS, "_2025_SINAIS_Notificados"), AUX)
+assign(paste0("RS", RS, "_2026_SINAIS_Notificados"), AUX)
 
 ###    Elaborando tabelas de sinais e sintomas. Possível somente a partir de 2015.         ###
 
@@ -1079,7 +1077,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }
 
-assign(paste0("RS", RS, "_2025_SINAIS_Confirmados"), AUX)
+assign(paste0("RS", RS, "_2026_SINAIS_Confirmados"), AUX)
 
 ###    Montando tabela de doenças pré-existentes    ###
 
@@ -1150,7 +1148,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }
 
-assign(paste0("RS", RS, "_2025_DOENCAS_PRE_EXISTENTES"), AUX)
+assign(paste0("RS", RS, "_2026_DOENCAS_PRE_EXISTENTES"), AUX)
 
 ###     Construindo tabela sinais de alarme     ###
 
@@ -1238,7 +1236,7 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }
 
-assign(paste0("RS", RS, "_2025_SINAIS_DE_ALARME"), AUX)
+assign(paste0("RS", RS, "_2026_SINAIS_DE_ALARME"), AUX)
 
 ###     Construindo tabela Dengue Grave      ###
 
@@ -1365,5 +1363,5 @@ for (i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   )
 }
 
-assign(paste0("RS", RS, "_2025_DENGUE_GRAVE"), AUX)
+assign(paste0("RS", RS, "_2026_DENGUE_GRAVE"), AUX)
 

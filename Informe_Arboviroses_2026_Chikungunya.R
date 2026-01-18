@@ -13,7 +13,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -37,9 +37,9 @@ AUX[(nrow(AUX)+ 1),2:54] <- apply(AUX[,2:54], 2, sum)
 
 AUX[nrow(AUX), 1] <- "Total"
 
-assign(paste0("RS", RS, "_2025_SE_Notificados_CHIK"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Notificados_CHIK"), AUX)
 
-assign("RS_2025_SE_Notificados_CHIK", AUX)
+assign("RS_2026_SE_Notificados_CHIK", AUX)
 
 ########################################################################################################
 ###     Construindo um for loop para realizar a tabela de Confirmados por semana epidemiológica      ###
@@ -57,7 +57,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -80,9 +80,9 @@ AUX[(nrow(AUX)+ 1),2:54] <- apply(AUX[,2:54], 2, sum)
 
 AUX[nrow(AUX), 1] <- "Total"
 
-assign(paste0("RS", RS, "_2025_SE_Confirmados_CHIK"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Confirmados_CHIK"), AUX)
 
-assign("RS_2025_SE_Confirmados_CHIK", AUX)
+assign("RS_2026_SE_Confirmados_CHIK", AUX)
 
 #####################################################################################################
 ###      Construindo um for loop para realizar a tabela de Prováveis por semana epidemiológica    ###
@@ -101,7 +101,7 @@ AUX[,1] <- BASE_IBGE[which(BASE_IBGE$RS == RS), 2]
 
 colnames (AUX)[2:54] <- c(1:53)
 
-N <- 202501
+N <- 202601
 
 O <- 2
 
@@ -132,8 +132,8 @@ AUX[nrow(AUX), 1] <- "Total"
 
 ####Casos prováveis por semana epidemiológica. Este objeto será apagado assim que for incluso no AUX_GRAF####
 
-assign(paste0("RS", "_2025_SE_Provaveis_CHIK"), AUX)
+assign(paste0("RS", "_2026_SE_Provaveis_CHIK"), AUX)
 
-assign(paste0("RS", RS, "_2025_SE_Provaveis_CHIK"), AUX)
+assign(paste0("RS", RS, "_2026_SE_Provaveis_CHIK"), AUX)
 
 

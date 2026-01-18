@@ -1,20 +1,20 @@
 ###    MAPAS      ###
 
-Theme <- function(){theme(theme_minimal(),
-                          panel.grid.major = element_line(color = "#C0C0C0"),
-                          panel.grid.minor = element_blank(),
-                          panel.background = element_rect(fill = "#F5F5F5"),
-                          legend.position = "bottom",
-                          legend.title = element_text(face = "bold",
-                                                      size = 14), 
-                          legend.text = element_text(size = 14), 
-                          plot.subtitle = element_text(hjust = 0,
-                                                       size = 12),
-                          plot.caption = element_text(size = 12,
-                                                      hjust = 0),
-                          plot.title = element_text(hjust = 0, 
-                                                    face = "bold",
-                                                    size = 24)
+Theme <- function(){
+  theme(panel.grid.major = element_line(color = "#C0C0C0"),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "#F5F5F5"),
+        legend.position = "bottom",
+        legend.title = element_text(face = "bold",
+                                    size = 14), 
+        legend.text = element_text(size = 14), 
+        plot.subtitle = element_text(hjust = 0,
+                                     size = 12),
+        plot.caption = element_text(size = 12,
+                                    hjust = 0),
+        plot.title = element_text(hjust = 0, 
+                                  face = "bold",
+                                  size = 24)
 )
   }
 ###########################################################################################################
@@ -36,18 +36,18 @@ MAPA_BASE$NM_MUN <- toupper(MAPA_BASE$NM_MUN)
 
 #####   Trabalhando os Mapas de dengue estaduais   ###
 
-PR_DENGUE_2025_GERAL[104, 2] <- "BELA VISTA DA CAROBA"
-PR_DENGUE_2025_GERAL[360, 2] <- "DIAMANTE D'OESTE"
-PR_DENGUE_2025_GERAL[93, 2] <- "ITAPEJARA D'OESTE"
-PR_DENGUE_2025_GERAL[265, 2] <- "MUNHOZ DE MELO"
-PR_DENGUE_2025_GERAL[117, 2] <- "PÉROLA D'OESTE"
-PR_DENGUE_2025_GERAL[184, 2] <- "RANCHO ALEGRE D'OESTE"
-PR_DENGUE_2025_GERAL[239, 2] <- "SANTA CRUZ DE MONTE CASTELO"
-PR_DENGUE_2025_GERAL[127, 2] <- "SÃO JORGE D'OESTE"
+PR_DENGUE_2026_GERAL[104, 2] <- "BELA VISTA DA CAROBA"
+PR_DENGUE_2026_GERAL[360, 2] <- "DIAMANTE D'OESTE"
+PR_DENGUE_2026_GERAL[93, 2] <- "ITAPEJARA D'OESTE"
+PR_DENGUE_2026_GERAL[265, 2] <- "MUNHOZ DE MELO"
+PR_DENGUE_2026_GERAL[117, 2] <- "PÉROLA D'OESTE"
+PR_DENGUE_2026_GERAL[184, 2] <- "RANCHO ALEGRE D'OESTE"
+PR_DENGUE_2026_GERAL[239, 2] <- "SANTA CRUZ DE MONTE CASTELO"
+PR_DENGUE_2026_GERAL[127, 2] <- "SÃO JORGE D'OESTE"
 
 ####  SOROTIPOS ESTADO   ##########
 
-MAPA_BASE_PR <- left_join(MAPA_BASE, PR_DENGUE_2025_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
+MAPA_BASE_PR <- left_join(MAPA_BASE, PR_DENGUE_2026_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
 
 AUX_I <- MAPA_BASE_PR %>% filter(DENV_I > 0 & DENV_II == 0 & DENV_III == 0 & DENV_IV == 0)
 AUX_II <- MAPA_BASE_PR %>% filter(DENV_I == 0 & DENV_II > 0 & DENV_III == 0 & DENV_IV == 0)
@@ -57,7 +57,7 @@ AUX_V <- MAPA_BASE_PR %>% filter(DENV_I > 0 & DENV_II == 0 & DENV_III > 0 & DENV
 AUX_VI <- MAPA_BASE_PR %>% filter(DENV_I == 0 & DENV_II > 0 & DENV_III > 0 & DENV_IV == 0)
 AUX_VII <- MAPA_BASE_PR %>% filter(DENV_I == 0 & DENV_II == 0 & DENV_III > 0 & DENV_IV == 0)
 
-PR_2025_GRAF_SOROTIPO_PR <- ggplot() + 
+PR_2026_GRAF_SOROTIPO_PR <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           fill = "white") + 
@@ -114,7 +114,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Incidencia,
                                                       "100,001 - 300", "300,001 - 500", ">500"))
 )
 
-PR_2025_GRAF_INCIDENCIA_PR <- ggplot() + 
+PR_2026_GRAF_INCIDENCIA_PR <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat)) +
@@ -150,7 +150,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Incidencia_Provaveis,
                                                       "100,001 - 300", "300,001 - 500", ">500"))
 )
 
-PR_2025_GRAF_INCIDENCIA_PROV_PR <- ggplot() + 
+PR_2026_GRAF_INCIDENCIA_PROV_PR <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat)) +
@@ -181,18 +181,18 @@ Casos Prováveis = Casos Notificados - Casos Descartados") +
 
 #######   Chikungunya    #######
 
-PR_CHIK_2025_GERAL$Provaveis <- as.integer(PR_CHIK_2025_GERAL$Notificados) - as.integer(PR_CHIK_2025_GERAL$Descartados)
+PR_CHIK_2026_GERAL$Provaveis <- as.integer(PR_CHIK_2026_GERAL$Notificados) - as.integer(PR_CHIK_2026_GERAL$Descartados)
 
-PR_CHIK_2025_GERAL[104, 2] <- "BELA VISTA DA CAROBA"
-PR_CHIK_2025_GERAL[360, 2] <- "DIAMANTE D'OESTE"
-PR_CHIK_2025_GERAL[93, 2] <- "ITAPEJARA D'OESTE"
-PR_CHIK_2025_GERAL[265, 2] <- "MUNHOZ DE MELO"
-PR_CHIK_2025_GERAL[117, 2] <- "PÉROLA D'OESTE"
-PR_CHIK_2025_GERAL[184, 2] <- "RANCHO ALEGRE D'OESTE"
-PR_CHIK_2025_GERAL[239, 2] <- "SANTA CRUZ DE MONTE CASTELO"
-PR_CHIK_2025_GERAL[127, 2] <- "SÃO JORGE D'OESTE"
+PR_CHIK_2026_GERAL[104, 2] <- "BELA VISTA DA CAROBA"
+PR_CHIK_2026_GERAL[360, 2] <- "DIAMANTE D'OESTE"
+PR_CHIK_2026_GERAL[93, 2] <- "ITAPEJARA D'OESTE"
+PR_CHIK_2026_GERAL[265, 2] <- "MUNHOZ DE MELO"
+PR_CHIK_2026_GERAL[117, 2] <- "PÉROLA D'OESTE"
+PR_CHIK_2026_GERAL[184, 2] <- "RANCHO ALEGRE D'OESTE"
+PR_CHIK_2026_GERAL[239, 2] <- "SANTA CRUZ DE MONTE CASTELO"
+PR_CHIK_2026_GERAL[127, 2] <- "SÃO JORGE D'OESTE"
 
-MAPA_BASE_PR <- left_join(MAPA_BASE, PR_CHIK_2025_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
+MAPA_BASE_PR <- left_join(MAPA_BASE, PR_CHIK_2026_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
 
 ###### Mapa Notificados   ############################
 
@@ -202,7 +202,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Notificados,
                                                       "51 - 100", "101 - 500", ">500"))
 )
 
-PR_2025_GRAF_CHIK_Notificados <- ggplot() + 
+PR_2026_GRAF_CHIK_Notificados <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat))  +
@@ -239,7 +239,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Incidencia,
 )
 )
 
-PR_2025_GRAF_CHIK_Incidência <- ggplot() + 
+PR_2026_GRAF_CHIK_Incidência <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat))  +
@@ -271,31 +271,31 @@ PR_2025_GRAF_CHIK_Incidência <- ggplot() +
 
 ####Elaborando for loop para criar tabela de dados gerais de notificação da 22ª RS###
 
-PR_ZIKA_2025_GERAL <- BASE_IBGE[, -c(4, 6)]
+PR_ZIKA_2026_GERAL <- BASE_IBGE[, -c(4, 6)]
 
-PR_ZIKA_2025_GERAL$Notificados <- NA
+PR_ZIKA_2026_GERAL$Notificados <- NA
 
-PR_ZIKA_2025_GERAL$Confirmados <- NA
+PR_ZIKA_2026_GERAL$Confirmados <- NA
 
-PR_ZIKA_2025_GERAL$Descartados <- NA
+PR_ZIKA_2026_GERAL$Descartados <- NA
 
-PR_ZIKA_2025_GERAL$Autoctones <- NA
+PR_ZIKA_2026_GERAL$Autoctones <- NA
 
-PR_ZIKA_2025_GERAL$Incidencia <- NA
+PR_ZIKA_2026_GERAL$Incidencia <- NA
 
-PR_ZIKA_2025_GERAL$Em_Investigacao <- NA
+PR_ZIKA_2026_GERAL$Em_Investigacao <- NA
 
 for(i in BASE_IBGE[, 2]){
   
   ###Notiicações###  
-  PR_ZIKA_2025_GERAL[which(PR_ZIKA_2025_GERAL$Código_IBGE == i), 5] <- as.integer(NINDINET2025%>% 
+  PR_ZIKA_2026_GERAL[which(PR_ZIKA_2026_GERAL$Código_IBGE == i), 5] <- as.integer(NINDINET2026%>% 
                                                                                     filter(ID_MN_RESI == i) %>%   
                                                                                     count()
   )   
   
   ###ZIKA###
   
-  PR_ZIKA_2025_GERAL[which(PR_ZIKA_2025_GERAL$Código_IBGE == i), 6] <-as.integer(NINDINET2025%>% 
+  PR_ZIKA_2026_GERAL[which(PR_ZIKA_2026_GERAL$Código_IBGE == i), 6] <-as.integer(NINDINET2026%>% 
                                                                                    filter(CLASSI_FIN == 1, 
                                                                                           ID_MN_RESI == i) %>%
                                                                                    count() 
@@ -305,7 +305,7 @@ for(i in BASE_IBGE[, 2]){
   
   
   
-  PR_ZIKA_2025_GERAL[which(PR_ZIKA_2025_GERAL$Código_IBGE == i), 7]<- as.integer(NINDINET2025%>% 
+  PR_ZIKA_2026_GERAL[which(PR_ZIKA_2026_GERAL$Código_IBGE == i), 7]<- as.integer(NINDINET2026%>% 
                                                                                    filter(CLASSI_FIN == 2,
                                                                                           ID_MN_RESI == i) %>% 
                                                                                    count()
@@ -314,7 +314,7 @@ for(i in BASE_IBGE[, 2]){
   ###Autóctones###
   
   
-  PR_ZIKA_2025_GERAL[which(PR_ZIKA_2025_GERAL$Código_IBGE == i), 8]<- as.integer(NINDINET2025%>% 
+  PR_ZIKA_2026_GERAL[which(PR_ZIKA_2026_GERAL$Código_IBGE == i), 8]<- as.integer(NINDINET2026%>% 
                                                                                    filter(ID_MN_RESI == i, 
                                                                                           TPAUTOCTO == 1,
                                                                                           CLASSI_FIN == 13) %>% 
@@ -325,26 +325,26 @@ for(i in BASE_IBGE[, 2]){
 
 ###Incidência###FORA DO LOOP###
 
-PR_ZIKA_2025_GERAL$Incidencia <- (PR_ZIKA_2025_GERAL$Autoctones/PR_ZIKA_2025_GERAL$População)*100000  
-PR_ZIKA_2025_GERAL$Incidencia <- format(round(PR_ZIKA_2025_GERAL$Incidencia, 2))
-PR_ZIKA_2025_GERAL$Incidencia <- as.numeric(PR_ZIKA_2025_GERAL$Incidencia)
+PR_ZIKA_2026_GERAL$Incidencia <- (PR_ZIKA_2026_GERAL$Autoctones/PR_ZIKA_2026_GERAL$População)*100000  
+PR_ZIKA_2026_GERAL$Incidencia <- format(round(PR_ZIKA_2026_GERAL$Incidencia, 2))
+PR_ZIKA_2026_GERAL$Incidencia <- as.numeric(PR_ZIKA_2026_GERAL$Incidencia)
 
-PR_ZIKA_2025_GERAL$Em_Investigacao <- as.integer(PR_ZIKA_2025_GERAL$Notificados) - as.integer(PR_ZIKA_2025_GERAL$Confirmados + PR_ZIKA_2025_GERAL$Descartados)
+PR_ZIKA_2026_GERAL$Em_Investigacao <- as.integer(PR_ZIKA_2026_GERAL$Notificados) - as.integer(PR_ZIKA_2026_GERAL$Confirmados + PR_ZIKA_2026_GERAL$Descartados)
 
-PR_ZIKA_2025_GERAL[400, 4:10] <- apply(PR_ZIKA_2025_GERAL[, 4:10], 2, sum)
+PR_ZIKA_2026_GERAL[400, 4:10] <- apply(PR_ZIKA_2026_GERAL[, 4:10], 2, sum)
 
 ##############   MAPAS ZIKA    ##########################################
 
-PR_ZIKA_2025_GERAL[104, 3] <- "BELA VISTA DA CAROBA"
-PR_ZIKA_2025_GERAL[360, 3] <- "DIAMANTE D'OESTE"
-PR_ZIKA_2025_GERAL[93, 3] <- "ITAPEJARA D'OESTE"
-PR_ZIKA_2025_GERAL[265, 3] <- "MUNHOZ DE MELO"
-PR_ZIKA_2025_GERAL[117, 3] <- "PÉROLA D'OESTE"
-PR_ZIKA_2025_GERAL[184, 3] <- "RANCHO ALEGRE D'OESTE"
-PR_ZIKA_2025_GERAL[239, 3] <- "SANTA CRUZ DE MONTE CASTELO"
-PR_ZIKA_2025_GERAL[127, 3] <- "SÃO JORGE D'OESTE"
+PR_ZIKA_2026_GERAL[104, 3] <- "BELA VISTA DA CAROBA"
+PR_ZIKA_2026_GERAL[360, 3] <- "DIAMANTE D'OESTE"
+PR_ZIKA_2026_GERAL[93, 3] <- "ITAPEJARA D'OESTE"
+PR_ZIKA_2026_GERAL[265, 3] <- "MUNHOZ DE MELO"
+PR_ZIKA_2026_GERAL[117, 3] <- "PÉROLA D'OESTE"
+PR_ZIKA_2026_GERAL[184, 3] <- "RANCHO ALEGRE D'OESTE"
+PR_ZIKA_2026_GERAL[239, 3] <- "SANTA CRUZ DE MONTE CASTELO"
+PR_ZIKA_2026_GERAL[127, 3] <- "SÃO JORGE D'OESTE"
 
-MAPA_BASE_PR <- left_join(MAPA_BASE, PR_ZIKA_2025_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
+MAPA_BASE_PR <- left_join(MAPA_BASE, PR_ZIKA_2026_GERAL, by = c("NM_MUN" = "Município_sem_Código"))
 
 ###### Mapa Notificados   ############################
 
@@ -354,7 +354,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Notificados,
                                                       "51 - 100", "101 - 500", ">500"))
 )
 
-PR_2025_ZIKA_CHIK_Notificados <- ggplot() + 
+PR_2026_ZIKA_CHIK_Notificados <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat))  +
@@ -391,7 +391,7 @@ MAPA_BASE_PR$Cat <- with(MAPA_BASE_PR, cut(x = Incidencia,
 )
 )
 
-PR_2025_GRAF_ZIKA_Incidência <- ggplot() + 
+PR_2026_GRAF_ZIKA_Incidência <- ggplot() + 
   geom_sf(data = MAPA_BASE_PR, 
           color = "black", 
           aes(fill = Cat))  +
@@ -421,7 +421,7 @@ PR_2025_GRAF_ZIKA_Incidência <- ggplot() +
 
 #####  Mapas Regional   #####
 
-MAPA_BASE_RS <- left_join(MAPA_BASE, RS22_2025_GERAL, 
+MAPA_BASE_RS <- left_join(MAPA_BASE, RS22_2026_GERAL, 
                           by = c("NM_MUN" = "Município")
 )
 
@@ -434,7 +434,7 @@ AUX_IV <- MAPA_BASE_RS %>% filter(DENV_I > 0 & DENV_II > 0 & DENV_III > 0 & DENV
 AUX_V <- MAPA_BASE_RS %>% filter(DENV_I > 0 & DENV_II == 0 & DENV_III > 0 & DENV_IV == 0)
 AUX_VI <- MAPA_BASE_RS %>% filter(DENV_I == 0 & DENV_II > 0 & DENV_III > 0 & DENV_IV == 0)
 
-RS22_2025_GRAF_Sorotipo <- ggplot() + 
+RS22_2026_GRAF_Sorotipo <- ggplot() + 
   geom_sf(data = MAPA_BASE_RS, 
           color = "black", 
           fill = "white") + 
@@ -472,7 +472,7 @@ RS22_2025_GRAF_Sorotipo <- ggplot() +
 #########################################################################################################################
 #########################   Mapa Chikungunya notificados REGIONAL   #####################################################
 
-MAPA_BASE_RS <- left_join(MAPA_BASE, PR_CHIK_2025_GERAL, 
+MAPA_BASE_RS <- left_join(MAPA_BASE, PR_CHIK_2026_GERAL, 
                           by = c("NM_MUN" = "Município_sem_Código")
 )
 
@@ -485,7 +485,7 @@ MAPA_BASE_RS$Cat <- with(MAPA_BASE_RS,
                                         "51 - 100", "101 - 500", ">500"))
 )
 
-RS22_2025_GRAF_CHK_Not <- ggplot() + 
+RS22_2026_GRAF_CHK_Not <- ggplot() + 
   geom_sf(data = MAPA_BASE_RS, 
           color = "black", 
           aes(fill = Cat)) + 
@@ -511,7 +511,7 @@ RS22_2025_GRAF_CHK_Not <- ggplot() +
 #########################################################################################################################
 #########################   Mapa Chikungunya Confirmados REGIONAL   #####################################################
 
-MAPA_BASE_RS <- left_join(MAPA_BASE, PR_CHIK_2025_GERAL, 
+MAPA_BASE_RS <- left_join(MAPA_BASE, PR_CHIK_2026_GERAL, 
                           by = c("NM_MUN" = "Município_sem_Código")
 )
 
@@ -525,7 +525,7 @@ MAPA_BASE_RS$Cat <- with(MAPA_BASE_RS,
                          )
 )
 
-RS22_2025_GRAF_CHK_Conf <- ggplot() + 
+RS22_2026_GRAF_CHK_Conf <- ggplot() + 
   geom_sf(data = MAPA_BASE_RS, 
           color = "black", 
           aes(fill = Cat)) + 
