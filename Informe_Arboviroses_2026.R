@@ -8,11 +8,11 @@ setwd("/home/gustavo/Área de trabalho/Análise_de_Dados/")
 
 #########################################################################################
 
-Fonte <- "Fonte: SINAN Online. BASE DBF acessada em 13/01/2026"   ##### Fonte dos gráficos relacionados ao SINAN
+Fonte <- "Fonte: SINAN Online. BASE DBF acessada em 20/01/2026"   ##### Fonte dos gráficos relacionados ao SINAN
 
-Fonte_1 <- "Fonte: Lacen. Acesso em 15/01/2026"            ##### Fonte dos gráficos relacionados ao LACEN
+Fonte_1 <- "Fonte: Lacen. Acesso em 22/01/2026"            ##### Fonte dos gráficos relacionados ao LACEN
 
-Fonte_2 <- "Fonte: Planilhas de Controle Municipais. Acesso em 15/01/2026"     ##### Fonte dos gráficos relacionados às Planilhas Municipais
+Fonte_2 <- "Fonte: Planilhas de Controle Municipais. Acesso em 23/01/2026"     ##### Fonte dos gráficos relacionados às Planilhas Municipais
 
 #########################################################################################
 
@@ -266,7 +266,7 @@ source("Informe_Arboviroses_2026_Laboratorio.R")
 
 ####      Buscando a planilha de índices das ovitrampas no google drive
 
-RS22_2026_INDICES_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1QWxmCxl7fPiE_6wnyPLZ-B7a0yXm6NxRhFAbhGOtHeU/edit?gid=863361484#gid=863361484", 
+RS22_2026_INDICES_OVITRAMPAS <- read_sheet("https://docs.google.com/spreadsheets/d/1RGAR1xVHRpG_NniY0ULxBg7MpJeugWk95MOco1hbplU/edit?gid=863361484#gid=863361484", 
                                            sheet = "Consolidado")
 
 source("Informe_Arboviroses_2026_Entomologia.R")
@@ -275,7 +275,7 @@ source("Informe_Arboviroses_2026_Inconsistencias.R")
 
 ####     Buscando a planilha RS22_2026_SINAN_DECODIFICADO do google sheets com as coordenadas geográficas inseridas pelos municípios   ####
 
-RS22_2026_SINAN_DECODIFICADO <- read_sheet("https://docs.google.com/spreadsheets/d/167vkgU2HLIRk2JKAr_dsxOvhu1luR60e6eMnpw9iIPI/edit?gid=1437725143#gid=1437725143", 
+RS22_2026_SINAN_DECODIFICADO <- read_sheet("https://docs.google.com/spreadsheets/d/1k5FWknsUEvf3-IPUlJ-awtVV8RpB_gDWtuu_t2pErgg/edit?gid=1437725143#gid=1437725143", 
                                            sheet= "SINAN")
 
 RS22_2026_SINAN_PROVAVEIS_DECODIFICADO <- RS22_2026_SINAN_DECODIFICADO[-which(RS22_2026_SINAN_DECODIFICADO$Classificacao_Final == "DESCARTADO"),] 
@@ -710,8 +710,8 @@ RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_ARAPUA / RS22_2026_GRAF_IDO_ARAPUA /
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_37.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 56,
+       width = 56,
+       height = 72,
        units = "cm",)
 
 RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_CRUZMALTINA / RS22_2026_GRAF_IDO_CRUZMALTINA / 
@@ -720,8 +720,8 @@ RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_CRUZMALTINA / RS22_2026_GRAF_IDO_CRUZMAL
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_38.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 56,
+       width = 56,
+       height = 72,
        units = "cm",)
 
 RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_JARDIM / RS22_2026_GRAF_IDO_JARDIM / 
@@ -730,18 +730,18 @@ RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_JARDIM / RS22_2026_GRAF_IDO_JARDIM /
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_39.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 56,
+       width = 56,
+       height = 72,
        units = "cm",)
 
-RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_MANUEL_RIBAS / RS22_2026_GRAF_IDO_MANUEL_RIBAS / 
+RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_MANOEL_RIBAS / RS22_2026_GRAF_IDO_MANOEL_RIBAS / 
                        RS22_2026_GRAF_IPO_MATO_RICO / RS22_2026_GRAF_IDO_MATO_RICO / 
                        RS22_2026_GRAF_IPO_NOVA_TEBAS / RS22_2026_GRAF_IDO_NOVA_TEBAS )
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_40.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 56,
+       width = 56,
+       height = 72,
        units = "cm",)
 
 RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_RIO_BRANCO / RS22_2026_GRAF_IDO_RIO_BRANCO / 
@@ -750,16 +750,16 @@ RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_RIO_BRANCO / RS22_2026_GRAF_IDO_RIO_BRAN
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_41.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 56,
+       width = 56,
+       height = 72,
        units = "cm",)
 
 RS22_2026_GRAF_1 <- (RS22_2026_GRAF_IPO_SAO_JOAO / RS22_2026_GRAF_IDO_SAO_JOAO  )
 
 ggsave("/home/gustavo/Área de trabalho/Análise_de_Dados/Imagens/ARBOVIROSES/RS22_2026_INFORME_Pag_42.png",
        RS22_2026_GRAF_1,
-       width = 46,
-       height = 14,
+       width = 56,
+       height = 24,
        units = "cm",)
 
 #####    Removendo Objetos desnecessários
@@ -946,6 +946,41 @@ rm(RS22_GRAF_Serie_Historica_Not_Conf,
    RS22_2026_SIG_JARDIM_OVITRAMPAS,
    RS22_2026_SIG_LIDIANOPOLIS_OVITRAMPAS,
    RS22_2026_SIG_LUNARDELLI_OVITRAMPAS,
+   RS22_CANDIDO_2026_SINAN_10S,
+   RS22_CANDIDO_2026_SINAN_10S,
+   RS22_GODOY_2026_SINAN_10S,
+   RS22_Ivaiporã_2026_SINAN_10S,
+   RS22_Jardim_Alegre_2026_SINAN_10S,
+   RS22_SANTA_MARIA_2026_SINAN_10S,
+   RS22_SAO_JOAO_DO_IVAI_2026_SINAN_10S,
+   RS22_LIDIANOPOLIS_2026_SINAN_10S,
+   RS22_RIO_BRANCO_2026_SINAN_10S,
+   RS22_ROSARIO_2026_SINAN_10S,
+   RS22_MATO_RICO_2026_SINAN_10S,
+   RS22_MANOEL_RIBAS_2026_SINAN_10S,
+   RS22_2026_TAB_Estrategicos,
+   RS22_2026_TAB_Estrategicos_Chik,
+   RS22_2026_TAB_INCON_HOSPITALIZACAO,
+   RS22_2026_TAB_INCON_INVESTIGACAO,
+   RS22_2026_TAB_INCON_LABORATORIO_Municipios,
+   RS22_2026_TAB_INCON_RESID_Municipios,
+   RS22_2026_TAB_Pop_Vulneravel,
+   RS22_2026_SINAN_10S,
+   AUX_IDO,
+   AUX_IMO,
+   AUX_IPO,
+   RS_2026_SE_Provaveis,
+   RS_2026_SE_Confirmados_CHIK,
+   RS_2026_SE_Notificados_CHIK,
+   RS_2026_SE_Provaveis_CHIK,
+   RS_2026_GRAF_CE_Confirmados_LUNARDELLI,
+   RS_2026_GRAF_CE_Notificados_LUNARDELLI,
+   RS_2026_GRAF_CE_Provaveis_LUNARDELLI,
+   RS_2026_GRAF_Taxa_Positividade_Chik_Mun,
+   RS_2026_GRAF_Taxa_Positividade_Dengue_Mun,
+   RS_2026_INFORME_CE_SEDE,
+   RS22_2026_GRAF_IDO_MANOEL_RIBAS,
+   RS22_2026_GRAF_IPO_MANOEL_RIBAS,
    RS22_2026_SIG_MANOEL_RIBAS_OVITRAMPAS,
    RS22_2026_SIG_MATO_RICO_OVITRAMPAS,
    RS22_2026_SIG_NOVA_TEBAS_OVITRAMPAS,

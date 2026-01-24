@@ -293,7 +293,7 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   
   AUX[which(AUX$COD_IBGE == i), 5] <- count(RS22_2026_SINAN %>% 
                                               filter(ID_MN_RESI == i, 
-                                                     CLASSI_FIN != is.na(RS22_2026_SINAN$CLASSI_FIN),
+                                                     is.na(RS22_2026_SINAN$CLASSI_FIN),
                                                      is.na(RS22_2026_SINAN$EVOLUCAO)
                                               )
   )
