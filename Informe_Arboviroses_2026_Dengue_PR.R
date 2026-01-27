@@ -199,7 +199,7 @@ RS22_2026_TAB_Estrategicos <- RS22_2026_DENGUE_ESTRATEGICOS %>%
              Dengue = "Dengue",
              D_S_A = "D.S.A.",
              Dengue_Grave = "Dengue Grave",
-             Incidencia = "Incidência",
+             Incidencia = "Incidência Autóctones",
              Incidencia_Provaveis = "Incidência Prováveis",
              DENV_I = "DENV I",
              DENV_II = "DENV II",
@@ -495,7 +495,7 @@ RS22_2026_TAB_Estrategicos_Chik <- RS22_2026_CHIK_ESTRATEGICOS %>%
              columns = c(3:7)) %>%
   cols_label(Município_sem_Código = "Município",
              Notificados = "Notificados",
-             Incidencia = "Incidência") %>%
+             Incidencia = "Incidência Autóctones") %>%
   tab_style(style = cell_text(weight = "bold"),
             locations = cells_column_labels(everything()
             )) %>%

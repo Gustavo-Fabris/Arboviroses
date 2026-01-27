@@ -182,6 +182,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_ARAPUA <- ggplot(AUX_GRAF, 
                                     aes(x = as.factor(SE),
                                         y = as.numeric(IPO))) +
@@ -298,6 +300,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_ARIRANHA <- ggplot(AUX_GRAF, 
                                       aes(x = as.factor(SE),
@@ -416,6 +420,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_CANDIDO <- ggplot(AUX_GRAF, 
                                      aes(x = as.factor(SE),
                                          y = as.numeric(IPO))) +
@@ -532,6 +538,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_CRUZMALTINA <- ggplot(AUX_GRAF, 
                                          aes(x = as.factor(SE),
@@ -650,6 +658,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_GODOY <- ggplot(AUX_GRAF, 
                                    aes(x = as.factor(SE),
                                        y = as.numeric(IPO))) +
@@ -766,6 +776,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_IVAIPORA <- ggplot(AUX_GRAF, 
                                       aes(x = as.factor(SE),
@@ -884,6 +896,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_JARDIM <- ggplot(AUX_GRAF, 
                                     aes(x = as.factor(SE),
                                         y = as.numeric(IPO))) +
@@ -1000,6 +1014,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_Lidianopolis <- ggplot(AUX_GRAF, 
                                           aes(x = as.factor(SE),
@@ -1118,6 +1134,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_LUNARDELLI <- ggplot(AUX_GRAF, 
                                         aes(x = as.factor(SE),
                                             y = as.numeric(IPO))) +
@@ -1234,6 +1252,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_MANOEL_RIBAS <- ggplot(AUX_GRAF, 
                                           aes(x = as.factor(SE),
@@ -1352,6 +1372,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_MATO_RICO <- ggplot(AUX_GRAF, 
                                        aes(x = as.factor(SE),
                                            y = as.numeric(IPO))) +
@@ -1468,6 +1490,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_NOVA_TEBAS <- ggplot(AUX_GRAF, 
                                         aes(x = as.factor(SE),
@@ -1586,6 +1610,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_RIO_BRANCO <- ggplot(AUX_GRAF, 
                                         aes(x = as.factor(SE),
                                             y = as.numeric(IPO))) +
@@ -1702,6 +1728,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_ROSARIO <- ggplot(AUX_GRAF, 
                                      aes(x = as.factor(SE),
@@ -1820,6 +1848,8 @@ colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
 
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
+
 RS22_2026_GRAF_IPO_SANTA_MARIA <- ggplot(AUX_GRAF, 
                                          aes(x = as.factor(SE),
                                              y = as.numeric(IPO))) +
@@ -1936,6 +1966,8 @@ AUX$SE <- factor(as.numeric(AUX$SE),
 colnames(AUX)[1] <- "IMO"
 
 AUX_GRAF$IMO <- AUX$IMO
+
+AUX_GRAF <- AUX_GRAF[!is.na(AUX_GRAF$IPO),]
 
 RS22_2026_GRAF_IPO_SAO_JOAO <- ggplot(AUX_GRAF, 
                                       aes(x = as.factor(SE),

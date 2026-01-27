@@ -12,7 +12,7 @@ Fonte <- "Fonte: SINAN Online. BASE DBF acessada em 20/01/2026"   ##### Fonte do
 
 Fonte_1 <- "Fonte: Lacen. Acesso em 22/01/2026"            ##### Fonte dos gráficos relacionados ao LACEN
 
-Fonte_2 <- "Fonte: Planilhas de Controle Municipais. Acesso em 23/01/2026"     ##### Fonte dos gráficos relacionados às Planilhas Municipais
+Fonte_2 <- "Fonte: Planilhas de Controle Municipais. Acesso em 27/01/2026"     ##### Fonte dos gráficos relacionados às Planilhas Municipais
 
 #########################################################################################
 

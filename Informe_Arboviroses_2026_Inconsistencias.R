@@ -65,7 +65,7 @@ RS22_2026_TAB_INCON_RESID_Municipios <- AUX %>%
   tab_options(heading.align = "left",
               column_labels.border.top.color = "black",
               column_labels.border.top.width = px(3)) %>%
-  tab_spanner(label = "Inconsistências",
+  tab_spanner(label = "Incompletude",
               columns = c(2:5),
               id = "SINAN") %>%
   cols_align(align = "center", 
@@ -171,8 +171,11 @@ RS22_2026_TAB_INCON_LABORATORIO_Municipios <- AUX %>%
               column_labels.border.top.color = "black",
               column_labels.border.top.width = px(3)) %>%
   tab_spanner(label = "Inconsistências",
-              columns = c(2:7),
+              columns = c(2:4),
               id = "SINAN") %>%
+  tab_spanner(label = "Incompletude",
+              columns = c(5:7),
+              id = "SINAN_1") %>%
   cols_align(align = "center", 
              columns = c(2:7)) %>%
   cols_label(Municipio = "Município",
@@ -249,9 +252,12 @@ RS22_2026_TAB_INCON_HOSPITALIZACAO <- AUX %>%
   tab_options(heading.align = "left",
               column_labels.border.top.color = "black",
               column_labels.border.top.width = px(3)) %>%
-  tab_spanner(label = "Inconsistências",
-              columns = c(2:5),
+  tab_spanner(label = "Incompletude",
+              columns = c(2:3),
               id = "SINAN") %>%
+  tab_spanner(label = "Inconsistências",
+              columns = c(4:5),
+              id = "SINAN_1") %>%
   cols_align(align = "center", 
              columns = c(2:5)) %>%
   cols_label(Municipio = "Município",
@@ -293,7 +299,7 @@ for(i in BASE_IBGE[(which(BASE_IBGE$RS == RS)), 2]){
   
   AUX[which(AUX$COD_IBGE == i), 5] <- count(RS22_2026_SINAN %>% 
                                               filter(ID_MN_RESI == i, 
-                                                     is.na(RS22_2026_SINAN$CLASSI_FIN),
+                                                     CLASSI_FIN != is.na(RS22_2026_SINAN$CLASSI_FIN),
                                                      is.na(RS22_2026_SINAN$EVOLUCAO)
                                               )
   )
@@ -334,14 +340,17 @@ RS22_2026_TAB_INCON_INVESTIGACAO <- AUX %>%
   tab_options(heading.align = "left",
               column_labels.border.top.color = "black",
               column_labels.border.top.width = px(3)) %>%
-  tab_spanner(label = "Inconsistências",
-              columns = c(2:6),
+  tab_spanner(label = "Incompletude",
+              columns = c(2:5),
               id = "SINAN") %>%
+  tab_spanner(label = "Inconsistências",
+              columns = c(6),
+              id = "SINAN_1") %>%
   cols_align(align = "center", 
              columns = c(2:6)) %>%
   cols_label(Municipio = "Município",
              S_Autoc = "Sem Autoctonia",
-             S_Encerramento = "Fichas em Aberto",
+             S_Encerramento = "Sem Evolução",
              Obitos_invest = "Óbitos em Investigação",
              Inconclusivo = "Fichas Inconclusivas",
              Duplicidade = "Fichas em Duplicidade") %>%

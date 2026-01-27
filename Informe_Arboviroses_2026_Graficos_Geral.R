@@ -598,17 +598,17 @@ RS22_GRAF_Zona <- ggplot (AUX_GRAF,
 
 ####      Adicionando os dados do período atual na tabela Série Histórica     ####
 
-RS_Serie_Historica_Base[1, 18] <- sum(RS_2026_GERAL$Notificados)
-RS_Serie_Historica_Base[2, 18] <- sum(RS_2026_GERAL$Dengue)
-RS_Serie_Historica_Base[3, 18] <- sum(RS_2026_GERAL$D_S_A)
-RS_Serie_Historica_Base[4, 18] <- sum(RS_2026_GERAL$Dengue_Grave)
-RS_Serie_Historica_Base[5, 18] <- sum(RS_2026_GERAL$Hospitalizacao)
-RS_Serie_Historica_Base[6, 18] <- sum(RS_2026_GERAL$Autoctones)
-RS_Serie_Historica_Base[7, 18] <- sum(RS_2026_GERAL$DENV_I)
-RS_Serie_Historica_Base[8, 18] <- sum(RS_2026_GERAL$DENV_II)
-RS_Serie_Historica_Base[9, 18] <- sum(RS_2026_GERAL$DENV_III)
-RS_Serie_Historica_Base[10, 18] <- sum(RS_2026_GERAL$DENV_IV)
-RS_Serie_Historica_Base[11, 18] <- sum(RS_2026_GERAL$Obitos)
+RS_Serie_Historica_Base[1, 19] <- sum(RS_2026_GERAL$Notificados)
+RS_Serie_Historica_Base[2, 19] <- sum(RS_2026_GERAL$Dengue)
+RS_Serie_Historica_Base[3, 19] <- sum(RS_2026_GERAL$D_S_A)
+RS_Serie_Historica_Base[4, 19] <- sum(RS_2026_GERAL$Dengue_Grave)
+RS_Serie_Historica_Base[5, 19] <- sum(RS_2026_GERAL$Hospitalizacao)
+RS_Serie_Historica_Base[6, 19] <- sum(RS_2026_GERAL$Autoctones)
+RS_Serie_Historica_Base[7, 19] <- sum(RS_2026_GERAL$DENV_I)
+RS_Serie_Historica_Base[8, 19] <- sum(RS_2026_GERAL$DENV_II)
+RS_Serie_Historica_Base[9, 19] <- sum(RS_2026_GERAL$DENV_III)
+RS_Serie_Historica_Base[10, 19] <- sum(RS_2026_GERAL$DENV_IV)
+RS_Serie_Historica_Base[11, 19] <- sum(RS_2026_GERAL$Obitos)
 
 AUX <- as.data.frame(t(RS_Serie_Historica_Base))
 
@@ -618,13 +618,13 @@ AUX <- AUX[-1,]
 
 AUX[,12] <- c("2009", "2010", "2011", "2012", "2013", 
               "2014", "2015", "2016", "2017", "2018", "2019", 
-              "2020", "2021", "2022", "2023", "2024", "2026")
+              "2020", "2021", "2022", "2023", "2024", "2025", "2026")
 
 colnames(AUX)[12] <- "Periodo"
 
 AUX <- AUX[,c(12, 1:11)]
 
-rownames(AUX) <- c(1:17)
+rownames(AUX) <- c(1:18)
 
 RS_Serie_Historica <- AUX
 
