@@ -4,7 +4,7 @@ Theme <- function(){theme(axis.text.x = element_text(angle = 85,
                                                       size = 12),
                            panel.grid.major = element_line(color = "#C0C0C0"),
                            panel.grid.minor = element_blank(),
-                           panel.background = element_rect(fill = "#DC143C"),
+                           panel.background = element_rect(fill = "#A52A2A"),
                            plot.title = element_text(face = "bold",
                                                      size = 19),
                           plot.caption = element_text(size = 12,
@@ -96,7 +96,7 @@ AUX <- apply(RS_CE_Notificados[, 1: (ncol(RS_CE_Notificados)-2)], 1 , median)
 
 RS_CE_Notificados$Mediana <- AUX
 
-######     Criando a coluna de Quartil_1 no data frame     ###############
+######     Criando a coluna de Quartil_3 no data frame     ###############
 
 Quartil_3 <- function(x) quantile(x, probs = 0.75)
 
@@ -128,12 +128,14 @@ RS_2026_GRAF_CE_Notificados <- ggplot(AUX_GRAF, aes(Ordem))  +
     labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -219,6 +221,8 @@ RS_CE_Confirmados[, (ncol(RS_CE_Confirmados)+1)] <- rownames(RS_CE_Confirmados)
 
 RS_CE_Confirmados <- RS_CE_Confirmados[, c(ncol(RS_CE_Confirmados), 1:(ncol(RS_CE_Confirmados) -1))]
 
+RS_CE_Confirmados <- RS_CE_Confirmados[-53, ]
+
 RS_CE_Confirmados[, 1] <- c(1:52)
 
 colnames(RS_CE_Confirmados)[1] <- "Semana_Epidemiológica"
@@ -243,12 +247,14 @@ RS_2026_GRAF_CE_Confirmados <- ggplot(AUX_GRAF, aes(Ordem))  +
    labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRMADOS - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -335,12 +341,14 @@ RS_2026_GRAF_CE_Provaveis <- ggplot(AUX_GRAF,
   labs(caption = Fonte,
        title = "Canal Endêmico Casos PROVÁVEIS - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -447,12 +455,14 @@ RS_2026_GRAF_CE_Notificados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS Ivaiporã- 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -553,12 +563,14 @@ RS_2026_GRAF_CE_Confirmados_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS Ivaiporã- 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -601,12 +613,14 @@ RS_2026_GRAF_CE_Provaveis_SEDE <- ggplot(AUX_GRAF, aes(Ordem))  +
        title = "Canal Endêmico Casos PROVÁVEIS Ivaiporã - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = Provaveis), 
             stat = "identity", 
             color = "black", 
@@ -713,12 +727,14 @@ RS_2026_GRAF_CE_Notificados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS Jardim Alegre - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -819,12 +835,14 @@ RS_2026_GRAF_CE_Confirmados_JARDIM <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS Jardim Alegre - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -868,12 +886,14 @@ RS_2026_GRAF_CE_Provaveis_JARDIM <- ggplot(AUX_GRAF,
        title = "Canal Endêmico Casos PROVÁVEIS Jardim Alegre - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = Provaveis), 
             stat = "identity", 
             color = "black", 
@@ -980,12 +1000,14 @@ RS_2026_GRAF_CE_Notificados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS São João do Ivaí - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -1087,12 +1109,14 @@ RS_2026_GRAF_CE_Confirmados_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS São João do Ivaí - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -1136,12 +1160,14 @@ RS_2026_GRAF_CE_Provaveis_SAO_JOAO_DO_IVAI <- ggplot(AUX_GRAF,
        title = "Canal Endêmico Casos PROVÁVEIS São João do Ivaí - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = Provaveis), 
             stat = "identity", 
             color = "black", 
@@ -1249,12 +1275,14 @@ RS_2026_GRAF_CE_Notificados_LUNARDELLI <- ggplot(AUX_GRAF, aes(Ordem))  +
   labs(caption = Fonte,
        title = "Canal Endêmico Casos NOTIFICADOS Lunardelli - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -1356,12 +1384,14 @@ RS_2026_GRAF_CE_Confirmados_LUNARDELLI <- ggplot(AUX_GRAF,
   labs(caption = Fonte,
        title = "Canal Endêmico Casos CONFIRADOS Lunardelli - 2026") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = `2026`), 
             stat = "identity", 
             color = "black", 
@@ -1405,12 +1435,14 @@ RS_2026_GRAF_CE_Provaveis_LUNARDELLI <- ggplot(AUX_GRAF,
        title = "Canal Endêmico Casos PROVÁVEIS Lunardelli - 2026",
        subtitle = "Casos Prováveis = Casos Notificados - Casos Descartados") +
   geom_area(aes(y = Quartil_3), 
-            fill = "#F0E68C",
-            alpha = 0.9) +
-  geom_area(aes(y = Mediana), 
-            fill = "#556B2F") +
+            fill = "#D2B48C",
+            alpha = 1) +
+  geom_line(aes(y = Mediana), 
+            stat = "identity",
+            color = "#2F4F4F",
+            linewidth = 1) +
   geom_area(aes(y = Quartil_1), 
-            fill = "#DCDCDC") +
+            fill = "#C0C0C0") +
   geom_line(aes(y = Provaveis), 
             stat = "identity", 
             color = "black", 
